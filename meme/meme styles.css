@@ -1,0 +1,131 @@
+/* 通用设置 */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* 容器 */
+main {
+  max-width: 1080px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 标题 */
+h2 {
+  /* font-size: 2rem; */
+  /* color: #0b1c7e; */
+  /* margin-bottom: 10px; */
+  text-align: center;
+}
+
+/* 页脚 */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* photo and meme*/
+.slick-slider {
+  width: 600px;
+  margin: auto;
+}
+
+.slick-slide {
+  display: flex; /* 使用 flexbox 以便居中图片 */
+  justify-content: center; /* 居中对齐图片 */
+  align-items: center; /* 垂直居中图片 */
+}
+
+.slick-slide img {
+  max-width: 100%; /* 设置图片最大宽度 */
+  max-height: 500px;
+  width: auto; /* 让图片宽度自适应父容器 */
+  height: auto; /* 高度自动调整，以保持图片比例 */
+}
+
+.slick-slide-info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+/* photo-gpt and meme part*/
+.photos-content,
+.meme-content {
+  column-count: 2; /* 两列布局 */
+  column-gap: 20px; /* 列之间的间距 */
+}
+
+.photo-item,
+.meme-item {
+  break-inside: avoid; /* 避免内容块被断开 */
+  margin-bottom: 20px; /* 图片和下方内容块之间的间距 */
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-height: 542px; /* 设置最大高度 */
+  overflow: hidden; /* 隐藏超出部分 */
+}
+
+.photo-item img,
+.meme-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.photo-info,
+.meme-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.photo-title,
+.meme-title {
+  font-size: 0.9em !important;
+  margin-right: 5px;
+}
+
+.photo-info .date,
+.meme-info .date {
+  display: none;
+}
+.photo-item:hover .photo-info,
+.meme-item:hover .meme-info {
+  opacity: 1;
+}
+
+/* photo-gpt and meme part*/
+/* 媒体查询：屏幕宽度小于 768px 时 */
+@media (max-width: 900px) {
+  div.photos-content,
+  div.meme-content {
+    column-count: 1 !important; /* 单列布局 */
+    column-gap: 20px !important; /* 列之间的间距 */
+  }
+}

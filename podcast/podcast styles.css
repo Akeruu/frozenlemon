@@ -1,0 +1,167 @@
+/* 通用设置 */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* 容器 */
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 标题 */
+h2 {
+  /* font-size: 2rem; */
+  /* color: #0b1c7e; */
+  /* margin-bottom: 10px; */
+  text-align: center;
+}
+
+/* 页脚 */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* 播客样式 */
+.podcast-section h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.podcast-section {
+  display: flex;
+  flex-direction: column;
+}
+.podcast-infor {
+  /* display: flex; */
+  align-items: center;
+}
+.podcast-logo {
+  text-align: center;
+}
+.podcast-infor img {
+  width: 150px;
+  height: 150px;
+  /* margin-right: 20px; */
+}
+.podcast-about {
+  /* flex: 1; */
+  line-height: 1.5;
+  width: 50%;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  width: 100%; /* 让 .podcast-about 占满整个父容器 */
+  text-align: center; /* 确保文本居中 */
+}
+
+.podcast-about p {
+  max-width: 500px; /* 控制文字块最大宽度，避免过宽 */
+  margin: 0 auto; /* 保证p元素居中 */
+  line-height: 1.5; /* 改善行间距 */
+}
+
+.podcast-episodes {
+  display: flex;
+  flex-direction: column;
+}
+.episode {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.date-duration {
+  display: flex;
+  justify-content: space-between;
+}
+.date,
+.duration {
+  color: grey;
+  font-size: 0.9em;
+}
+.title-play {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* 减小日期和标题的间距 */
+}
+.title {
+  margin-left: 5px; /* 减小日期和标题的间距 */
+  text-decoration: none;
+  color: black;
+  flex: 1;
+}
+/* 播放按钮样式 */
+.play-button {
+  border: none;
+  background-color: #0b1c7e; /* 按钮背景色 */
+  cursor: pointer;
+  width: 25px; /* 按钮宽度 */
+  height: 25px; /*按钮高度 */
+  border-radius: 50%; /* 圆形按钮 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* 按钮颜色 */
+  font-size: 0.8em;
+  font-family: Arial, sans-serif; /* 字体 */
+}
+
+.description {
+  color: grey;
+  font-size: 0.8em;
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 默认显示的行数 */
+}
+
+.description.expanded {
+  -webkit-line-clamp: unset; /* 取消行数限制，显示完整文本 */
+  white-space: normal; /* 取消文本的单行显示 */
+}
+
+.more-button {
+  display: block;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 0.8em;
+  text-decoration: none;
+  text-align: right;
+}
+
+.more-button:hover {
+  font-weight: bold;
+  color: #0b1c7e;
+}
+
+.progress-bar-container {
+  display: none; /* 默认隐藏 */
+  margin-top: 5px;
+}
+.progress-bar {
+  width: 100%;
+  height: 4px; /* 细化进度条 */
+  background-color: #e0e0e0;
+  position: relative;
+}
+.progress {
+  height: 100%;
+  background-color: #0b1c7e;
+  width: 0;
+}
+/* boke gpt */
