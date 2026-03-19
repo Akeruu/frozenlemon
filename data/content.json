@@ -1,0 +1,126 @@
+{
+  "photos": [
+    { "title": "白云山天空", "date": "2024-06-30", "image": "image/白云山天空.webp" },
+    { "title": "千灯湖上亭子", "date": "2024-06-30", "image": "image/千灯湖上亭子.webp" },
+    { "title": "白云山小路", "date": "2024-06-30", "image": "image/白云山小路.webp" },
+    { "title": "千灯湖蓝色天空", "date": "2024-06-30", "image": "image/千灯湖蓝色天空.webp" },
+    { "title": "遇见彩虹yeah", "date": "2024-06-30", "image": "image/彩虹2.webp" },
+    { "title": "云与建筑", "date": "2024-06-30", "image": "image/云与建筑.webp" },
+    { "title": "灯笼树", "date": "2024-06-30", "image": "image/灯笼树.webp" },
+    { "title": "白云山树叶", "date": "2024-06-30", "image": "image/白云山树叶.webp" },
+    { "title": "白云山山坡", "date": "2024-06-30", "image": "image/白云山山坡.webp" },
+    { "title": "千灯湖建筑", "date": "2024-06-30", "image": "image/千灯湖建筑.webp" },
+    { "title": "千灯湖上塔", "date": "2024-06-30", "image": "image/千灯湖上塔.webp" },
+    { "title": "摩托车后", "date": "2024-06-30", "image": "image/摩托车后.webp" },
+    { "title": "湖中喷泉", "date": "2024-06-30", "image": "image/湖中喷泉.webp" }
+  ],
+  "memes": [
+    { "title": "经常画的人物小像", "date": "2024-06-30", "image": "image/meme/身体记忆.webp" },
+    { "title": "炸毛波波", "date": "2024-06-30", "image": "image/meme/炸毛波波.webp" },
+    { "title": "小柴胡", "date": "2024-06-30", "image": "image/meme/小柴胡.webp" },
+    { "title": "秋菊打官司2", "date": "2024-06-30", "image": "image/meme/秋菊打官司2.webp" },
+    { "title": "猫猫赛博墓碑", "date": "2024-06-30", "image": "image/meme/猫猫赛博墓碑.webp" },
+    { "title": "白云山登山第一次", "date": "2024-06-30", "image": "image/meme/白云山登山第一次.webp" },
+    { "title": "肥皂们", "date": "2024-06-30", "image": "image/meme/肥皂们.webp" },
+    { "title": "健身计划", "date": "2024-06-30", "image": "image/meme/健身计划.webp" },
+    { "title": "白云山登山第二次", "date": "2024-06-30", "image": "image/meme/白云山登山第二次.webp" },
+    { "title": "荔湾嫌疑人", "date": "2024-06-30", "image": "image/meme/荔湾嫌疑人.webp" },
+    { "title": "波波票务", "date": "2024-06-30", "image": "image/meme/波波票务.webp" },
+    { "title": "人物画像", "date": "2024-06-30", "image": "image/meme/人物画像.webp" }
+  ],
+  "blogs": [
+    {
+      "title": "蓝色帷幔 ・ 一次复杂的情绪记录",
+      "date": "2024-09-15",
+      "cover": "image/blog/蓝色帷幔tiny.webp",
+      "href": "blog/blue-veil/",
+      "tags": ["日常", "碎碎念"]
+    },
+    {
+      "title": "身体记忆",
+      "date": "2022-09-20",
+      "cover": "image/blog/身体记忆.webp",
+      "href": "blog/body-memory/",
+      "tags": ["日常", "自我"]
+    },
+    {
+      "title": "Hello! Chris Lee",
+      "date": "2024-06-30",
+      "cover": "image/blog/在吗.webp",
+      "href": "blog/hello-chrislee/",
+      "tags": ["音乐", "碎碎念"]
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "潜在意识｜近期更新 01",
+      "date": "2026-03-01",
+      "duration": "约 45 分钟",
+      "description": "关于个体与世界认知的一次对话。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 02",
+      "date": "2026-02-20",
+      "duration": "约 38 分钟",
+      "description": "从日常经验聊到长期成长。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 03",
+      "date": "2026-02-06",
+      "duration": "约 42 分钟",
+      "description": "关于关系、边界与表达。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 04",
+      "date": "2026-01-26",
+      "duration": "约 35 分钟",
+      "description": "回到真实体验，重新理解自我。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 05",
+      "date": "2026-01-12",
+      "duration": "约 40 分钟",
+      "description": "关于创作与表达焦虑。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 06",
+      "date": "2025-12-28",
+      "duration": "约 44 分钟",
+      "description": "年末复盘与新年提问。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 07",
+      "date": "2025-12-15",
+      "duration": "约 33 分钟",
+      "description": "如何和情绪相处。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 08",
+      "date": "2025-12-01",
+      "duration": "约 39 分钟",
+      "description": "从关系里看见自己。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 09",
+      "date": "2025-11-18",
+      "duration": "约 47 分钟",
+      "description": "聊聊选择和不确定性。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    },
+    {
+      "title": "潜在意识｜近期更新 10",
+      "date": "2025-11-03",
+      "duration": "约 36 分钟",
+      "description": "关于行动与反馈闭环。",
+      "link": "https://www.ximalaya.com/album/72549254"
+    }
+  ]
+}

@@ -51,8 +51,10 @@ footer {
   text-align: center;
 }
 .podcast-infor img {
-  width: 150px;
-  height: 150px;
+  width: clamp(96px, 18vw, 140px);
+  height: auto;
+  max-height: 130px;
+  object-fit: cover;
   /* margin-right: 20px; */
 }
 .podcast-about {

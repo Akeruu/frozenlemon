@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hello!Chris Lee</title>
     <link rel="stylesheet" href="../styles/blog styles.css" />
-    <link rel="icon" href="../image/镜子圆.png" type="image/png" />
+    <link rel="stylesheet" href="../styles/components.css" />
+    <link rel="icon" href="../image/镜子圆.webp" type="image/webp" />
   </head>
   <body>
-    <header>
-      
-    </header>
+    <div data-include="../components/subpage-header.html"></div>
 
     <main>
 
-      <h1>Hello! Chris Lee</h1>
-      <p class="date">2020-02-08</p>
+      <header class="article-head">
+        <h1>Hello! Chris Lee</h1>
+        <p class="date">发布于 2020-02-08</p>
+      </header>
       
       <div class="blog-cover-wrapper">
         <img
-          src="../image/blog/在吗.jpg"
+          src="../image/blog/在吗.webp"
           alt="在吗？"
           class="blog-cover"
         />
@@ -80,8 +81,8 @@
         </p>
       </article>
     </main>
-    <footer>
-      <p>© 2024 Frozen Lemon</p>
-    </footer>
+    <div data-include="../components/site-footer.html"></div>
+    <script type="module" src="../scripts/includes.js"></script>
+    <script type="module" src="../scripts/New Site.js"></script>
   </body>
 </html>
