@@ -1,0 +1,681 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-width: 375px;
+  background-color: var(--un-c-bg);
+  color: var(--un-rc-invert);
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+ul {
+  list-style: none;
+}
+div.side {
+  padding: 38.8px 45px;
+  position: fixed;
+}
+div.main {
+  padding: 50px 90px 50px 45px;
+  margin-left: 263.85px;
+}
+
+/* aide */
+div.side,
+nav.nav-part,
+div.tags-part {
+  width: 173.85px;
+}
+.profile,
+.profile a {
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  justify-content: center;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.profile h2 {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1.1px;
+  /* color: #333; */
+}
+
+div.quotes span {
+  margin-left: 66px;
+  /* color: #333; */
+}
+/* 横线 */
+.side hr {
+  margin-top: 16px;
+}
+/* 侧边栏标题 */
+.side h4 {
+  /* color: #333; */
+}
+
+/* 空间 */
+.nav-li {
+  margin: 1em 0;
+  position: relative;
+}
+.nav-li a {
+  color: #222;
+}
+.nav-li a:hover {
+  color: #0b1c7e;
+  font-weight: bold;
+}
+.nav-hidden {
+  display: none;
+}
+/* .nav-hidden ul::before {
+  content: "👉 ";
+} */
+/* 标签 */
+.tags-part a {
+  display: flex;
+  flex-direction: column;
+}
+.tags-li {
+  display: inline-block;
+  margin: 4px;
+  font-size: 14px;
+}
+.first-line-tag {
+  margin-top: 0;
+}
+.tags-part .tag,
+.blog-info .tag {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px 8px;
+  text-decoration: none;
+  color: #333;
+}
+.tags-part .tag:hover,
+.blog-info .tag:hover {
+  color: #0b1c7e;
+  font-weight: 600;
+  box-shadow: 0 0 5px 0 rgba(18, 10, 179, 0.242);
+  border: none;
+}
+/* 插播-博客标签 */
+.blog-info .tags {
+  display: flex;
+  gap: 5px; /* 标签之间的间距 */
+}
+/* main */
+section {
+  margin-bottom: 40px;
+}
+
+/* 切换模式 */
+/* 默认样式（白天模式） */
+
+/* 基本样式变量（白天模式） */
+:root {
+  --un-rc-base: 255, 255, 255; /* 基础颜色（背景色） */
+  --un-rc-invert: 0, 0, 0; /* 文字和图标颜色 */
+  --un-c-bg: #fff; /* 背景色 */
+  --un-c-bg-weak: #f9f9f9; /* 较弱的背景色（通常用于区分不同区域） */
+  --un-c-bg-mute: #f1f1f1; /* 低饱和度背景色（通常用于次要区域） */
+  --un-f-sys-sans: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Droid Sans",
+    "Helvetica Neue"; /* 系统无衬线字体 */
+  --un-f-sys-serif: "Times New Roman", Georgia, Palatino, Times; /* 系统衬线字体 */
+  --un-f-cjk: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback",
+    "Microsoft YaHei"; /* CJK 字体（中文、日文、韩文） */
+  --un-f-mono: Menlo, Monaco, Consolas, "Courier New", monospace; /* 等宽字体 */
+  --un-f-base: var(--un-f-sys-sans), var(--un-f-cjk), sans-serif; /* 基础字体（主要字体） */
+  --un-f-heading: var(--un-f-sys-sans), var(--un-f-cjk), sans-serif; /* 标题字体 */
+  --un-rc-accent: var(--t-rc-primary); /* 强调色（主题颜色） */
+  --un-c-text: rgba(var(--un-rc-invert), 0.82); /* 主要文本颜色 */
+  --un-c-text-light: rgba(var(--un-rc-invert), 0.58); /* 次要文本颜色 */
+  --un-c-text-strong: rgba(var(--un-rc-invert), 0.94); /* 强调文本颜色 */
+  --un-c-text-mute: rgba(
+    var(--un-rc-invert),
+    0.2
+  ); /* 静音文本颜色（通常用于注释或提示） */
+  --un-c-divider: rgba(var(--un-rc-invert), 0.08); /* 分隔线颜色 */
+  --un-c-divider-light: rgba(var(--un-rc-invert), 0.04); /* 较轻的分隔线颜色 */
+  --un-c-accent: rgb(var(--un-rc-accent)); /* 强调色（RGB 形式） */
+  --tc-c-primary: var(--un-c-accent); /* 主要链接颜色 */
+  --tc-c-link: var(--un-c-accent); /* 链接颜色 */
+}
+
+/* 夜间模式变量 */
+.dark-theme {
+  --un-rc-base: 19, 23, 31; /* 夜间模式背景色的 RGB 值（#13171F） */
+  --un-rc-invert: 255, 255, 255; /* 夜间模式下的文本颜色（通常是白色） */
+  --un-c-bg: #13171f; /* 夜间模式背景色 */
+  --un-c-bg-weak: #3a3a3a; /* 夜间模式下较弱的背景色 */
+  --un-c-bg-mute: #444; /* 夜间模式下低饱和度背景色 */
+  --un-rc-accent: var(
+    --t-rc-secondary
+  ); /* 夜间模式下的强调色（可能与白天模式不同） */
+  --un-c-text: rgba(var(--un-rc-invert), 0.82); /* 夜间模式下的主要文本颜色 */
+  --un-c-text-light: rgba(
+    var(--un-rc-invert),
+    0.58
+  ); /* 夜间模式下的次要文本颜色 */
+  --un-c-text-strong: rgba(
+    var(--un-rc-invert),
+    0.94
+  ); /* 夜间模式下的强调文本颜色 */
+  --un-c-text-mute: rgba(
+    var(--un-rc-invert),
+    0.2
+  ); /* 夜间模式下的静音文本颜色 */
+  --un-c-divider: rgba(var(--un-rc-invert), 0.08); /* 夜间模式下的分隔线颜色 */
+  --un-c-divider-light: rgba(
+    var(--un-rc-invert),
+    0.04
+  ); /* 夜间模式下较轻的分隔线颜色 */
+  --un-c-accent: rgb(var(--un-rc-accent)); /* 夜间模式下的强调色（RGB 形式） */
+}
+
+/* 夜间模式的样式变化 */
+.dark-theme,
+.dark-theme a {
+  background-color: var(--un-c-bg);
+  color: var(--un-c-text);
+}
+
+.dark-theme .blog-item {
+  background-color: #181c25;
+}
+
+.dark-theme a:hover {
+  color: #e0c6b0;
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9;
+}
+
+.theme-toggle > input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.theme-toggle > label {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 22px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  /*修改bgc*/
+  background-color: rgba(var(--un-rc-invert), 0.1);
+  cursor: pointer;
+}
+
+.theme-toggle input:focus + label {
+  outline: 2px solid;
+  /* outline: 5px auto -webkit-focus-ring-color; */
+}
+
+.theme-toggle_handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  /*修改bgc*/
+  background-color: rgba(var(--un-rc-base), 0.86);
+  transition: transform 0.3s; /*多的*/
+}
+
+.theme-toggle input:checked + label .theme-toggle_handle {
+  transform: translateX(18px);
+}
+
+.theme-toggle svg {
+  position: absolute;
+  fill: currentColor;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  z-index: 2;
+  transition: color 0.15s linear;
+}
+
+.theme-toggle .sun {
+  left: 5px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle .moon {
+  right: 5px;
+  display: block;
+}
+
+.dark-theme .moon {
+  display: block;
+}
+
+.dark-theme .sun {
+  display: block;
+}
+
+/* podcast */
+
+/* boke gpt */
+/* 播客样式 */
+.podcast-section h2 {
+  margin-top: 0;
+}
+.podcast-section {
+  display: flex;
+  flex-direction: column;
+}
+.podcast-infor {
+  display: flex;
+  align-items: center;
+}
+.podcast-infor img {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+}
+.podcast-about {
+  flex: 1;
+  line-height: 1.5;
+}
+
+.podcast-episodes {
+  display: flex;
+  flex-direction: column;
+}
+.episode {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.date-duration {
+  display: flex;
+  justify-content: space-between;
+}
+.date,
+.duration {
+  color: grey;
+  font-size: 0.9em;
+}
+.title-play {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* 减小日期和标题的间距 */
+}
+.title {
+  margin-left: 5px; /* 减小日期和标题的间距 */
+  text-decoration: none;
+  color: black;
+  flex: 1;
+}
+/* 播放按钮样式 */
+.play-button {
+  border: none;
+  background-color: #0b1c7e; /* 按钮背景色 */
+  cursor: pointer;
+  width: 25px; /* 按钮宽度 */
+  height: 25px; /*按钮高度 */
+  border-radius: 50%; /* 圆形按钮 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* 按钮颜色 */
+  font-size: 0.8em;
+  font-family: Arial, sans-serif; /* 字体 */
+}
+
+.description {
+  color: grey;
+  font-size: 0.8em;
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 默认显示的行数 */
+}
+
+.description.expanded {
+  -webkit-line-clamp: unset; /* 取消行数限制，显示完整文本 */
+  white-space: normal; /* 取消文本的单行显示 */
+}
+
+.more-button {
+  display: block;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 0.8em;
+  text-decoration: none;
+  text-align: right;
+}
+
+.more-button:hover {
+  font-weight: bold;
+  color: #0b1c7e;
+}
+
+.progress-bar-container {
+  display: none; /* 默认隐藏 */
+  margin-top: 5px;
+}
+.progress-bar {
+  width: 100%;
+  height: 4px; /* 细化进度条 */
+  background-color: #e0e0e0;
+  position: relative;
+}
+.progress {
+  height: 100%;
+  background-color: #0b1c7e;
+  width: 0;
+}
+/* boke gpt */
+
+/* 博客 */
+/* blog-gpt */
+.blog-item {
+  display: flex;
+  align-items: flex-start; /* 使图片和文本对齐 */
+  /* background-color: #fff; */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.blog-cover-wrapper {
+  width: 80px; /* 固定宽度 */
+  height: 80px; /* 高度与宽度一致，保持正方形 */
+  margin-right: 15px; /* 图片和文本之间的间距 */
+  position: relative;
+}
+
+.blog-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-content {
+  flex: 1; /* 使内容部分占据剩余空间 */
+}
+
+.blog-item h4 {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.blog-item h4 a {
+  text-decoration: none;
+}
+
+.blog-item h4 a:hover {
+  color: #0b1c7e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.blog-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.blog-info .date {
+  color: #999;
+}
+
+/* blog-gpt */
+
+/* photo */
+.slick-slider {
+  width: 600px;
+  margin: auto;
+}
+
+.slick-slide {
+  display: flex; /* 使用 flexbox 以便居中图片 */
+  justify-content: center; /* 居中对齐图片 */
+  align-items: center; /* 垂直居中图片 */
+}
+
+.slick-slide img {
+  max-width: 100%; /* 设置图片最大宽度 */
+  max-height: 500px;
+  width: auto; /* 让图片宽度自适应父容器 */
+  height: auto; /* 高度自动调整，以保持图片比例 */
+}
+
+.slick-slide-info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+/* 自定义 Slick Slider 箭头按钮样式 */
+.slick-prev,
+.slick-next {
+  background-color: white; /* 设置按钮背景颜色 */
+  border-radius: 50%; /* 圆形按钮 */
+  width: 30px; /* 设置按钮宽度 */
+  height: 30px; /* 设置按钮高度 */
+  line-height: 0; /* 行高等于按钮高度，以便文本垂直居中 */
+  font-size: 0; /* 按钮文本字体大小 */
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-prev:before {
+  content: "<";
+}
+
+.slick-next:before {
+  content: ">";
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: #0b1c7e; /* 箭头图标的颜色 */
+  font-size: 30px; /* 箭头图标的字体大小 */
+  opacity: 1;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #0b1c7e;
+  font-weight: bolder;
+}
+
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: white;
+}
+.slick-prev {
+  left: -50px; /* 左侧按钮距离容器的距离 */
+}
+
+.slick-next {
+  right: -50px; /* 右侧按钮距离容器的距离 */
+}
+
+.photo-info {
+  text-align: center;
+}
+
+/* photo-gpt and meme part*/
+.photos-content,
+.meme-content {
+  column-count: 2; /* 两列布局 */
+  column-gap: 20px; /* 列之间的间距 */
+}
+
+.photo-item,
+.meme-item {
+  break-inside: avoid; /* 避免内容块被断开 */
+  margin-bottom: 20px; /* 图片和下方内容块之间的间距 */
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-height: 542px; /* 设置最大高度 */
+  overflow: hidden; /* 隐藏超出部分 */
+}
+
+.photo-item img,
+.meme-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.photo-info,
+.meme-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.photo-title,
+.meme-title {
+  font-size: 0.9em !important;
+  margin-right: 5px;
+}
+
+.photo-info .date,
+.meme-info .date {
+  display: none;
+}
+.photo-item:hover .photo-info,
+.meme-item:hover .meme-info {
+  opacity: 1;
+}
+
+/* photo-gpt and meme part*/
+/* 媒体查询：屏幕宽度小于 768px 时 */
+@media (max-width: 900px) {
+  div.photos-content,
+  div.meme-content {
+    column-count: 1 !important; /* 单列布局 */
+    column-gap: 20px !important; /* 列之间的间距 */
+  }
+}
+
+/* 当屏幕宽度小于800px时，调整 aside 的显示和位置 */
+@media (max-width: 800px) {
+  body {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  div.side {
+    padding: 10px;
+    position: static;
+    display: flex;
+    flex-direction: column; /* 确保侧边栏内容纵向排列 */
+  }
+  div.main {
+    padding: 10px 16px;
+    margin-left: 0;
+  }
+  div.whole-pro {
+    display: flex;
+    flex-direction: column; /* 确保内容纵向排列 */
+  }
+  /* .podcast-infor {
+    display: flex;
+    align-items: center;
+  } */
+  .nav-part,
+  .tags-part {
+    display: none;
+  }
+  .nav-hidden {
+    display: flex;
+    height: 88.4px;
+    margin-top: -30.4px;
+    margin-left: 194px;
+    margin-right: 16px;
+    align-items: center;
+    justify-content: right;
+  }
+  .nav-hidden ul {
+    padding: 10px 0 10px 10px;
+    margin-bottom: 0;
+  }
+  .nav-hidden li {
+    margin: 2px; /* 可选：设置横向间距 */
+    display: inline;
+  }
+
+  .theme-toggle {
+    display: flex;
+    position: static;
+    justify-content: right;
+    margin-top: -80px;
+    margin-right: 16px;
+  }
+
+  div.photo-item,
+  div.meme-item {
+    break-inside: avoid !important; /* 避免内容块被断开 */
+    /* margin-bottom: 20px; 图片和下方内容块之间的间距 */
+    position: relative !important;
+    display: inline-block !important;
+    width: 100%;
+    max-height: 542px !important; /* 设置最大高度 */
+    overflow: hidden !important; /* 隐藏超出部分 */
+    margin-bottom: 10px !important;
+  }
+}

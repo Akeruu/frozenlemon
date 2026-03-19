@@ -1,0 +1,108 @@
+/* 通用设置 */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* 容器 */
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 标题 */
+h1 {
+  font-size: 2rem;
+  /* color: #0b1c7e; */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h2,
+h3 {
+  margin-top: 20px;
+  color: #444;
+}
+
+/* 时间信息 */
+p.date {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #888;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 封面照片 */
+.blog-cover-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blog-cover {
+  max-width: 85%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 段落 */
+p {
+  margin-bottom: 20px;
+  /* text-indent: 2em; 段首缩进 */
+}
+
+/* 引用 */
+blockquote {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f1f1f1;
+  border-left: 5px solid #0b1c7e;
+  font-style: italic;
+}
+
+/* 图片 */
+img {
+  max-width: 100%;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 列表 */
+ul,
+ol {
+  margin: 20px 0;
+  padding-left: 40px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* 链接 */
+a {
+  color: #0b1c7e;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 页脚 */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
