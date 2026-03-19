@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>博客 | 自留地</title>
     <link rel="stylesheet" href="../blog/blog whole styles.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
   </head>
   <body>
+    <div data-include="../components/subpage-header.html"></div>
     <main>
-      <section class="blogs-section">
+      <section class="blogs-section" id="blogs" data-content-source="blogs">
         <h2 class="section-title">博客 | 自留地</h2>
 
         <div class="blog-item">
           <div class="blog-cover-wrapper">
-            <img src="../image/blog/蓝色帷幔tiny.jpg" class="blog-cover" />
+            <img src="../image/blog/蓝色帷幔tiny.webp" class="blog-cover" />
           </div>
           <div class="blog-content">
             <h4>
-              <a href="blue-veil.html" target="_blank"
+              <a href="blue-veil/" target="_blank"
                 >蓝色帷幔 ・ 一次住院的情绪记录</a
               >
             </h4>
@@ -33,11 +35,11 @@
 
         <div class="blog-item">
           <div class="blog-cover-wrapper">
-            <img src="../image/blog/身体记忆.jpg" class="blog-cover" />
+            <img src="../image/blog/身体记忆.webp" class="blog-cover" />
           </div>
           <div class="blog-content">
             <h4>
-              <a href="body-memory.html" target="_blank">身体记忆</a>
+              <a href="body-memory/" target="_blank">身体记忆</a>
             </h4>
             <div class="blog-info">
               <div class="tags">
@@ -51,11 +53,11 @@
 
         <div class="blog-item">
           <div class="blog-cover-wrapper">
-            <img src="../image/blog/在吗.jpg" class="blog-cover" />
+            <img src="../image/blog/在吗.webp" class="blog-cover" />
           </div>
           <div class="blog-content">
             <h4>
-              <a href="Hello-ChrisLee.html" target="_blank">Hello! Chris Lee</a>
+              <a href="hello-chrislee/" target="_blank">Hello! Chris Lee</a>
             </h4>
             <div class="blog-info">
               <div class="tags">
@@ -68,11 +70,9 @@
         </div>
       </section>
     </main>
+    <div data-include="../components/site-footer.html"></div>
 
-    <footer>
-      <p>&copy; 2024 Frozen Lemon.</p>
-    </footer>
-
-    <script src="../scripts/New Site.js"></script>
+    <script type="module" src="../scripts/includes.js"></script>
+    <script type="module" src="../scripts/New Site.js"></script>
   </body>
 </html>
