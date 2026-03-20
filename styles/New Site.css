@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  min-width: 375px;
+  min-width: 280px;
   background-color: var(--un-c-bg);
   color: rgb(var(--un-rc-invert));
   line-height: 1.65;
@@ -615,7 +615,8 @@ label:focus-visible {
 
 /* photo */
 .slick-slider {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   margin: auto;
 }
 
@@ -749,6 +750,14 @@ label:focus-visible {
 .photo-item:hover .photo-info,
 .meme-item:hover .meme-info {
   opacity: 1;
+}
+
+/* 触摸设备无 hover，始终显示图片标题信息 */
+@media (hover: none) {
+  .photo-info,
+  .meme-info {
+    opacity: 1;
+  }
 }
 
 .photo-item img,
@@ -980,37 +989,44 @@ body.modal-open {
     display: flex;
     flex-direction: column; /* 确保内容纵向排列 */
   }
-  /* .podcast-infor {
-    display: flex;
-    align-items: center;
-  } */
   .nav-part,
   .tags-part {
     display: none;
   }
   .nav-hidden {
     display: flex;
-    height: 88.4px;
+    min-height: 48px;
     margin-top: -30.4px;
-    margin-left: 194px;
-    margin-right: 16px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 12px;
     align-items: center;
     justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 4px;
   }
   .nav-hidden ul {
-    padding: 10px 0 10px 10px;
-    margin-bottom: 0;
+    padding: 8px 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px;
   }
   .nav-hidden li {
-    margin: 2px; /* 可选：设置横向间距 */
+    margin: 0;
     display: inline;
   }
 
   .nav-hidden a {
     display: inline-block;
-    padding: 4px 8px;
+    padding: 6px 10px;
     border-radius: 999px;
     color: var(--nav-link-color, #1f2937);
+    font-size: 0.9rem;
+    min-height: 44px;
+    line-height: 32px;
+    box-sizing: border-box;
   }
 
   .nav-hidden a:hover {
@@ -1023,24 +1039,39 @@ body.modal-open {
     position: static;
     justify-content: flex-end;
     margin-top: -80px;
-    margin-right: 16px;
+    margin-right: 0;
+  }
+
+  div.quotes span {
+    margin-left: 0;
+    text-align: center;
   }
 
   div.photo-item,
   div.meme-item {
-    break-inside: avoid !important; /* 避免内容块被断开 */
-    /* margin-bottom: 20px; 图片和下方内容块之间的间距 */
+    break-inside: avoid !important;
     position: relative !important;
     display: inline-block !important;
     width: 100%;
-    max-height: 542px !important; /* 设置最大高度 */
-    overflow: hidden !important; /* 隐藏超出部分 */
+    max-height: 542px !important;
+    overflow: hidden !important;
     margin-bottom: 10px !important;
   }
 
   .scroll-to-top {
     right: 16px;
     bottom: 16px;
+  }
+}
+
+/* 320px～480px：进一步保证导航与触控区域 */
+@media (max-width: 480px) {
+  .nav-hidden a {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+  div.main {
+    padding: 10px 12px;
   }
 }
 

@@ -69,6 +69,14 @@ async function initDataDrivenContent() {
     });
   } catch (error) {
     console.error("Failed to initialize data-driven content:", error);
+    sources.forEach((node) => {
+      if (node.children.length === 0 || node.querySelector(".content-load-failed")) return;
+      const msg = document.createElement("p");
+      msg.className = "content-load-failed";
+      msg.style.cssText = "color:var(--un-c-text-light,rgba(0,0,0,.58));font-size:0.9rem;padding:12px 0;";
+      msg.textContent = "内容加载失败，请刷新重试。";
+      node.appendChild(msg);
+    });
   }
 }
 
