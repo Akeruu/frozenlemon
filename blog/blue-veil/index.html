@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>蓝色帷幔</title>
+    <link rel="icon" href="../../image/镜子圆.webp" type="image/webp" />
+  </head>
+  <body>
+    <script>
+      (async function () {
+        const response = await fetch("../blue-veil.html");
+        let html = await response.text();
+        html = html
+          .replaceAll("../styles/", "../../styles/")
+          .replaceAll("../image/", "../../image/")
+          .replaceAll("../scripts/", "../../scripts/")
+          .replaceAll("../components/", "../../components/");
+        document.open();
+        document.write(html);
+        document.close();
+      })();
+    </script>
+  </body>
+</html>
