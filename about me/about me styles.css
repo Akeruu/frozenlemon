@@ -18,6 +18,32 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.about-section article {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.about-section h3 {
+  margin: 28px 0 8px;
+}
+
+.about-section ol {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.about-section li {
+  margin: 8px 0;
+}
+
+@media (max-width: 700px) {
+  main {
+    margin: 16px auto;
+    padding: 16px;
+  }
+}
+
 /* 标题 */
 h2 {
   /* font-size: 2rem; */

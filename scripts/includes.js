@@ -19,6 +19,7 @@ async function loadIncludes() {
   hydrateNavLinks();
   markActiveNav();
   hydrateDynamicFooter();
+  document.dispatchEvent(new CustomEvent("site:includes-loaded"));
 }
 
 function getSiteBasePath() {
@@ -55,6 +56,13 @@ function markActiveNav() {
     if (isActive) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
+      const nav = link.closest(".site-shell-nav");
+      if (nav && nav.scrollWidth > nav.clientWidth) {
+        nav.scrollLeft = Math.max(
+          0,
+          link.offsetLeft - nav.clientWidth / 2 + link.offsetWidth / 2
+        );
+      }
     } else {
       link.classList.remove("active");
       link.removeAttribute("aria-current");

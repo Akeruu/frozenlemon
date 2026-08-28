@@ -113,11 +113,39 @@ footer {
   opacity: 1;
 }
 
+@media (hover: none) {
+  .photo-info {
+    opacity: 1;
+  }
+}
+
 /* photo-gpt */
 /* 媒体查询：屏幕宽度小于 768px 时 */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   div.photos-content {
     column-count: 1 !important; /* 单列布局 */
     column-gap: 20px !important; /* 列之间的间距 */
+  }
+}
+
+@media (max-width: 700px) {
+  main {
+    margin: 16px auto;
+    padding: 16px;
+  }
+
+  .photo-item {
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 16px;
+  }
+
+  .photo-info {
+    position: static;
+    justify-content: flex-start;
+    opacity: 1;
+    padding: 8px 2px 2px;
+    background: transparent;
+    color: #1f2937;
   }
 }

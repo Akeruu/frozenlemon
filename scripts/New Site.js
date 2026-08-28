@@ -1,3 +1,6 @@
+applyPreferredTheme();
+document.addEventListener("site:includes-loaded", initThemeToggle);
+
 document.addEventListener("DOMContentLoaded", async () => {
   ensureFavicon();
   initThemeToggle();
@@ -6,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initSidebarTagQuickJump();
   initHomeSectionIndicator();
   await initArchivePage();
-  await initPodcastSection();
+  initPodcastSection();
   initArticleEnhancements();
   optimizeImages();
   hardenExternalLinks();
@@ -16,6 +19,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 let contentCache = null;
+const HIDDEN_MEME_TITLES = new Set([
+  "波波票务",
+  "荔湾嫌疑人",
+  "秋菊打官司2",
+  "猫猫赛博墓碑"
+]);
+
+function getVisibleMemes(items) {
+  return items.filter((item) => !HIDDEN_MEME_TITLES.has(item.title));
+}
 
 function getSiteBasePath() {
   const path = window.location.pathname;
@@ -62,12 +75,15 @@ async function initDataDrivenContent() {
       if (source === "photos") {
         renderPhotoItems(node, data.photos || []);
       } else if (source === "memes") {
-        renderMemeItems(node, data.memes || []);
+        renderMemeItems(node, getVisibleMemes(data.memes || []));
       } else if (source === "blogs") {
         renderBlogItems(node, data.blogs || []);
       }
     });
   } catch (error) {
+    sources.forEach((node) => {
+      node.innerHTML = '<p class="content-error">内容暂时无法加载，请稍后刷新重试。</p>';
+    });
     console.error("Failed to initialize data-driven content:", error);
   }
 }
@@ -110,18 +126,22 @@ function renderBlogItems(section, items) {
   items.forEach((item) => {
     const card = document.createElement("div");
     card.className = "blog-item";
+    const articleHref = withBase(item.href);
     card.innerHTML = `
-      <div class="blog-cover-wrapper">
+      <a class="blog-cover-wrapper blog-cover-link" href="${articleHref}" aria-label="阅读文章：${escapeHtml(item.title)}">
         <img src="${withBase(item.cover)}" class="blog-cover" alt="${escapeHtml(item.title)}封面" />
-      </div>
+      </a>
       <div class="blog-content">
         <h4>
-          <a href="${withBase(item.href)}" target="_blank">${escapeHtml(item.title)}</a>
+          <a href="${articleHref}">${escapeHtml(item.title)}</a>
         </h4>
         <div class="blog-info">
           <div class="tags">
             ${item.tags
-              .map((tag) => `<a href="#blogs" class="tag">${escapeHtml(tag)}</a>`)
+              .map(
+                (tag) =>
+                  `<button type="button" class="tag" data-card-filter="${escapeHtml(tag)}" aria-label="筛选标签：${escapeHtml(tag)}">${escapeHtml(tag)}</button>`
+              )
               .join("")}
           </div>
           <span class="date">${escapeHtml(item.date)}</span>
@@ -132,30 +152,61 @@ function renderBlogItems(section, items) {
   });
 }
 
-function initThemeToggle() {
-  const themeToggle = document.getElementById("js-theme-toggle");
-  if (!themeToggle) return;
-
-  const storedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const shouldUseDark = storedTheme ? storedTheme === "dark" : prefersDark;
-
-  if (shouldUseDark) {
-    document.documentElement.classList.add("dark-theme");
-    themeToggle.checked = true;
+function getPreferredTheme() {
+  let storedTheme = null;
+  try {
+    storedTheme = localStorage.getItem("theme");
+  } catch (error) {
+    console.warn("Theme preference is unavailable:", error);
   }
 
-  themeToggle.addEventListener("change", () => {
-    const isDark = themeToggle.checked;
-    document.documentElement.classList.toggle("dark-theme", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+  if (storedTheme === "dark" || storedTheme === "light") {
+    return storedTheme;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function applyPreferredTheme() {
+  const theme = getPreferredTheme();
+  document.documentElement.classList.toggle("dark-theme", theme === "dark");
+  document.documentElement.style.colorScheme = theme;
+  return theme;
+}
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.classList.toggle("dark-theme", isDark);
+  document.documentElement.style.colorScheme = theme;
+  document
+    .querySelectorAll("[data-theme-toggle]")
+    .forEach((toggle) => (toggle.checked = isDark));
+
+  try {
+    localStorage.setItem("theme", theme);
+  } catch (error) {
+    console.warn("Theme preference could not be saved:", error);
+  }
+}
+
+function initThemeToggle() {
+  const theme = applyPreferredTheme();
+  document.querySelectorAll("[data-theme-toggle]").forEach((themeToggle) => {
+    themeToggle.checked = theme === "dark";
+    if (themeToggle.dataset.themeBound === "true") return;
+
+    themeToggle.dataset.themeBound = "true";
+    themeToggle.addEventListener("change", () => {
+      applyTheme(themeToggle.checked ? "dark" : "light");
+    });
   });
 }
 
 function optimizeImages() {
   const images = Array.from(document.querySelectorAll("main img"));
   images.forEach((img, index) => {
-    const highPriority = index < 6;
+    const highPriority = index < 2;
     img.loading = highPriority ? "eager" : "lazy";
     img.decoding = "async";
     img.setAttribute("fetchpriority", highPriority ? "high" : "low");
@@ -260,13 +311,16 @@ function initScrollToTopButton() {
 function initImageModal() {
   const images = Array.from(
     document.querySelectorAll(
-    ".photo-item img, .meme-item img, .blog-cover, .blog-main-cover, .blog-cover img"
+      ".photo-item img, .meme-item img, .article-main .blog-cover, .article-main .blog-main-cover"
     )
   );
   if (!images.length) return;
 
   const modal = document.createElement("div");
   modal.className = "image-modal";
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-label", "图片预览");
   modal.setAttribute("aria-hidden", "true");
   modal.innerHTML = `
     <button type="button" class="image-modal-nav prev" aria-label="上一张">‹</button>
@@ -283,6 +337,7 @@ function initImageModal() {
   const prevButton = modal.querySelector(".image-modal-nav.prev");
   const nextButton = modal.querySelector(".image-modal-nav.next");
   let currentIndex = 0;
+  let previouslyFocused = null;
 
   const renderByIndex = (index) => {
     const safeIndex = (index + images.length) % images.length;
@@ -297,15 +352,30 @@ function initImageModal() {
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+    previouslyFocused?.focus();
   };
 
   images.forEach((img, index) => {
     img.style.cursor = "zoom-in";
-    img.addEventListener("click", () => {
+    img.tabIndex = 0;
+    img.setAttribute("role", "button");
+    img.setAttribute("aria-label", `预览图片：${img.alt || index + 1}`);
+
+    const openModal = () => {
+      previouslyFocused = document.activeElement;
       renderByIndex(index);
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("modal-open");
+      closeButton.focus();
+    };
+
+    img.addEventListener("click", openModal);
+    img.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openModal();
+      }
     });
   });
 
@@ -383,6 +453,13 @@ function initBlogTagFilter() {
     applyFilter(target.dataset.filterValue || "all");
   });
 
+  blogSection.addEventListener("click", (event) => {
+    const tag = event.target.closest("[data-card-filter]");
+    if (!tag) return;
+    applyFilter(tag.dataset.cardFilter || "all");
+    toolbar.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
   window.applyBlogFilter = (value) => {
     blogItems = Array.from(blogSection.querySelectorAll(".blog-item"));
     blogItems.forEach((item) => {
@@ -398,9 +475,10 @@ function initBlogTagFilter() {
 
 function initRevealAnimations() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!("IntersectionObserver" in window)) return;
 
   const revealTargets = document.querySelectorAll(
-    "section, .blog-item, .photo-item, .meme-item, .episode"
+    ".blog-item, .photo-item, .meme-item, .episode"
   );
   if (!revealTargets.length) return;
 
@@ -413,7 +491,7 @@ function initRevealAnimations() {
         }
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    { threshold: 0.04, rootMargin: "0px 0px -4% 0px" }
   );
 
   revealTargets.forEach((el) => {
@@ -427,100 +505,145 @@ async function initPodcastSection() {
   if (!container) return;
 
   const rssUrl = "https://www.ximalaya.com/album/72549254.xml";
-  container.innerHTML = '<p class="podcast-loading">正在加载播客内容...</p>';
+  await renderPodcastFallback(container);
 
   try {
-    const xml = await fetchWithTimeout(rssUrl, 8000);
+    const xml = await fetchWithTimeout(rssUrl, 5000);
     const items = parsePodcastItems(xml).slice(0, 40);
 
     if (!items.length) {
-      await renderPodcastFallback(container);
       return;
     }
+    if (container.dataset.playbackStarted !== "true") {
+      renderPlayablePodcastItems(container, items);
+    }
+  } catch (error) {
+    console.warn("Podcast RSS unavailable; keeping local content:", error);
+  }
+}
 
-    container.innerHTML = "";
-    let activeAudio = null;
-    let activeButton = null;
-    let activeProgressContainer = null;
+function renderPlayablePodcastItems(container, items) {
+  container.innerHTML = "";
+  delete container.dataset.playbackStarted;
 
-    const renderedEpisodes = [];
-    items.forEach((item) => {
-      const { episodeDiv, audio, playButton, progressBarContainer } = createEpisodeNode(item);
+  let activeAudio = null;
+  let activeButton = null;
+  let activeProgressContainer = null;
+  const renderedEpisodes = [];
 
-      const togglePlay = () => {
-        if (activeAudio && activeAudio !== audio) {
-          activeAudio.pause();
-          if (activeButton) {
-            activeButton.classList.remove("playing");
-            activeButton.innerHTML = "&#9658;";
-          }
-          if (activeProgressContainer) {
-            activeProgressContainer.style.display = "none";
-          }
-        }
+  const resetActivePlayer = () => {
+    if (activeButton) {
+      activeButton.classList.remove("playing", "loading");
+      activeButton.innerHTML = "&#9658;";
+      activeButton.setAttribute("aria-label", "播放或暂停音频");
+      activeButton.setAttribute("aria-pressed", "false");
+    }
+    if (activeProgressContainer) {
+      activeProgressContainer.style.display = "none";
+    }
+  };
 
-        if (audio.paused) {
-          audio.play();
+  items.forEach((item) => {
+    const { episodeDiv, audio, playButton, progressBarContainer } =
+      createEpisodeNode(item);
+    let isLoading = false;
+
+    const togglePlay = async () => {
+      if (isLoading) return;
+      container.dataset.playbackStarted = "true";
+      if (activeAudio && activeAudio !== audio) {
+        activeAudio.pause();
+        resetActivePlayer();
+      }
+
+      if (audio.paused) {
+        isLoading = true;
+        activeAudio = audio;
+        activeButton = playButton;
+        activeProgressContainer = progressBarContainer;
+        playButton.classList.add("loading");
+        playButton.innerHTML = "…";
+        playButton.setAttribute("aria-label", "正在加载音频");
+        progressBarContainer.style.display = "block";
+        try {
+          await audio.play();
+          isLoading = false;
+          playButton.classList.remove("loading");
           playButton.classList.add("playing");
           playButton.innerHTML = "&#10074;&#10074;";
-          progressBarContainer.style.display = "block";
-          activeAudio = audio;
-          activeButton = playButton;
-          activeProgressContainer = progressBarContainer;
-        } else {
-          audio.pause();
-          playButton.classList.remove("playing");
-          playButton.innerHTML = "&#9658;";
-          progressBarContainer.style.display = "none";
-          if (activeAudio === audio) {
-            activeAudio = null;
-            activeButton = null;
-            activeProgressContainer = null;
-          }
-        }
-      };
-
-      playButton.addEventListener("click", togglePlay);
-      episodeDiv.querySelector(".title").addEventListener("click", (event) => {
-        event.preventDefault();
-        togglePlay();
-      });
-
-      audio.addEventListener("ended", () => {
-        playButton.classList.remove("playing");
-        playButton.innerHTML = "&#9658;";
-        progressBarContainer.style.display = "none";
-        if (activeAudio === audio) {
+          playButton.setAttribute("aria-label", "暂停音频");
+          playButton.setAttribute("aria-pressed", "true");
+        } catch (error) {
+          isLoading = false;
+          playButton.classList.remove("loading");
+          resetActivePlayer();
+          playButton.setAttribute("aria-label", "播放失败，请稍后重试");
           activeAudio = null;
           activeButton = null;
           activeProgressContainer = null;
+          console.warn("Podcast audio could not start:", error);
         }
-      });
+      } else {
+        audio.pause();
+        resetActivePlayer();
+        activeAudio = null;
+        activeButton = null;
+        activeProgressContainer = null;
+      }
+    };
 
-      renderedEpisodes.push(episodeDiv);
-      container.appendChild(episodeDiv);
+    playButton.addEventListener("click", togglePlay);
+    episodeDiv.querySelector(".title").addEventListener("click", (event) => {
+      event.preventDefault();
+      togglePlay();
     });
 
-    const isPodcastDetailPage = window.location.pathname.includes("/podcast/");
-    const initialVisibleCount = isPodcastDetailPage ? 10 : 3;
-    initPodcastExpandCollapse(container, renderedEpisodes, initialVisibleCount);
-  } catch (error) {
-    await renderPodcastFallback(container);
-    console.error("Error fetching RSS feed:", error);
-  }
+    audio.addEventListener("ended", () => {
+      resetActivePlayer();
+      activeAudio = null;
+      activeButton = null;
+      activeProgressContainer = null;
+    });
+
+    renderedEpisodes.push(episodeDiv);
+    container.appendChild(episodeDiv);
+  });
+
+  const isPodcastDetailPage = window.location.pathname.includes("/podcast/");
+  initPodcastExpandCollapse(
+    container,
+    renderedEpisodes,
+    isPodcastDetailPage ? 10 : 3
+  );
 }
 
 async function renderPodcastFallback(container) {
   try {
     const data = await loadContentData();
-    const fallbackItems = (data.podcasts || []).slice(0, 10);
+    const fallbackItems = data.podcasts || [];
     if (!fallbackItems.length) {
       container.innerHTML =
         '<p class="podcast-loading">播客加载失败，请稍后重试。</p>';
       return;
     }
 
+    const playableItems = fallbackItems
+      .filter((item) => item.enclosure)
+      .map((item) => ({
+        title: item.title,
+        pubDate: item.date,
+        duration: item.duration || "",
+        enclosure: item.enclosure,
+        descriptionText: item.description || ""
+      }));
+
+    if (playableItems.length) {
+      renderPlayablePodcastItems(container, playableItems);
+      return;
+    }
+
     container.innerHTML = "";
+    const renderedEpisodes = [];
     fallbackItems.forEach((item) => {
       const card = document.createElement("article");
       card.className = "episode fallback";
@@ -530,14 +653,23 @@ async function renderPodcastFallback(container) {
           <p class="duration">${escapeHtml(item.duration || "")}</p>
         </div>
         <div class="title-play">
-          <a class="title" href="${escapeHtml(item.link || withBase("podcast/"))}" target="_blank">
+          <a class="play-button fallback-listen" href="${escapeHtml(item.link || withBase("podcast/"))}" target="_blank" rel="noopener noreferrer" aria-label="前往收听：${escapeHtml(item.title)}">&#9658;</a>
+          <a class="title" href="${escapeHtml(item.link || withBase("podcast/"))}" target="_blank" rel="noopener noreferrer">
             ${escapeHtml(item.title)}
           </a>
         </div>
         <p class="description">${escapeHtml(item.description || "前往收听完整节目内容。")}</p>
       `;
+      renderedEpisodes.push(card);
       container.appendChild(card);
     });
+
+    const isPodcastDetailPage = window.location.pathname.includes("/podcast/");
+    initPodcastExpandCollapse(
+      container,
+      renderedEpisodes,
+      isPodcastDetailPage ? 10 : 3
+    );
   } catch (error) {
     container.innerHTML =
       '<p class="podcast-loading">播客加载失败，请稍后重试。</p>';
@@ -568,33 +700,24 @@ async function initArchivePage() {
       tags: ["影像", "照片"],
       type: "影像"
     }));
+    const memes = getVisibleMemes(data.memes || []).map((meme) => ({
+      title: meme.title,
+      date: meme.date,
+      dateObj: new Date(meme.date),
+      href: "meme/",
+      tags: ["涂鸦", "Meme"],
+      type: "涂鸦"
+    }));
+    const podcasts = (data.podcasts || []).map((podcast) => ({
+      title: podcast.title,
+      date: podcast.date,
+      dateObj: new Date(podcast.date),
+      href: "podcast/",
+      tags: ["播客", "节目更新"],
+      type: "播客"
+    }));
 
-    let podcasts = [];
-    try {
-      const rssText = await fetchWithTimeout(
-        "https://www.ximalaya.com/album/72549254.xml",
-        8000
-      );
-      podcasts = parsePodcastItems(rssText)
-        .slice(0, 12)
-        .map((episode) => {
-          const normalizedDate = episode.pubDate
-            ? new Date(episode.pubDate)
-            : new Date();
-          return {
-            title: episode.title,
-            date: normalizedDate.toISOString().slice(0, 10),
-            dateObj: normalizedDate,
-            href: "podcast/",
-            tags: ["播客", "节目更新"],
-            type: "播客"
-          };
-        });
-    } catch (error) {
-      console.warn("Archive podcast feed unavailable:", error);
-    }
-
-    const allEntries = [...blogs, ...photos, ...podcasts];
+    const allEntries = [...blogs, ...photos, ...memes, ...podcasts];
 
     const allTags = Array.from(
       new Set(allEntries.flatMap((entry) => entry.tags || []))
@@ -631,7 +754,7 @@ async function initArchivePage() {
                 (item) => `
               <li>
                 <span class="timeline-type">${escapeHtml(item.type)}</span>
-                <a href="${withBase(item.href)}" target="_blank">${escapeHtml(item.title)}</a>
+                <a href="${withBase(item.href)}">${escapeHtml(item.title)}</a>
                 <span class="timeline-date">${escapeHtml(item.date)}</span>
                 <span class="timeline-tags">${(item.tags || [])
                   .map((tag) => `#${escapeHtml(tag)}`)
@@ -763,6 +886,7 @@ function createEpisodeNode(item) {
   playButton.classList.add("play-button");
   playButton.type = "button";
   playButton.setAttribute("aria-label", "播放或暂停音频");
+  playButton.setAttribute("aria-pressed", "false");
   playButton.innerHTML = "&#9658;";
 
   titlePlayDiv.appendChild(playButton);
@@ -819,7 +943,7 @@ function createEpisodeNode(item) {
       window.getComputedStyle(descriptionParagraph).lineHeight
     );
     if (!lineHeight) return;
-    const maxHeight = 3 * lineHeight;
+    const maxHeight = 2 * lineHeight;
     const actualHeight = descriptionParagraph.scrollHeight;
     moreButton.style.display = actualHeight > maxHeight ? "block" : "none";
   };
@@ -848,8 +972,30 @@ function initArticleEnhancements() {
   if (main.hasAttribute("data-no-toc")) return;
   if (window.location.pathname.includes("/about/")) return;
 
+  initArticleBreadcrumb(main, article);
   initReadingProgress(article);
   initArticleToc(main, article);
+}
+
+function initArticleBreadcrumb(main, article) {
+  if (main.querySelector(".article-breadcrumb")) return;
+
+  const title = main.querySelector("h1")?.textContent?.trim() || "文章正文";
+  const breadcrumb = document.createElement("nav");
+  breadcrumb.className = "article-breadcrumb";
+  breadcrumb.setAttribute("aria-label", "面包屑导航");
+  breadcrumb.innerHTML = `
+    <a href="${withBase("blog/")}">博客</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">${escapeHtml(title)}</span>
+  `;
+  main.prepend(breadcrumb);
+
+  const backLink = document.createElement("a");
+  backLink.className = "article-back-link";
+  backLink.href = withBase("blog/");
+  backLink.textContent = "← 返回博客列表";
+  article.insertAdjacentElement("afterend", backLink);
 }
 
 function initReadingProgress(article) {

@@ -1,13 +1,27 @@
 <header class="site-shell-header">
   <div class="site-shell-inner">
     <a class="site-shell-brand" href="../" data-route="/">速冻柠檬</a>
-    <nav class="site-shell-nav" aria-label="主导航">
-      <a href="../podcast/" data-route="/podcast/">播客</a>
-      <a href="../photo/" data-route="/photo/">影像</a>
-      <a href="../meme/" data-route="/meme/">涂鸦</a>
-      <a href="../blog/" data-route="/blog/">博客</a>
-      <a href="../archive/" data-route="/archive/">归档</a>
-      <a href="../about/" data-route="/about/">关于</a>
-    </nav>
+    <div class="site-shell-actions">
+      <nav class="site-shell-nav" aria-label="主导航">
+        <a href="../podcast/" data-route="/podcast/">播客</a>
+        <a href="../photo/" data-route="/photo/">影像</a>
+        <a href="../meme/" data-route="/meme/">涂鸦</a>
+        <a href="../blog/" data-route="/blog/">博客</a>
+        <a href="../archive/" data-route="/archive/">归档</a>
+        <a href="../about/" data-route="/about/">关于</a>
+      </nav>
+      <div class="site-theme-toggle">
+        <input
+          id="site-shell-theme-toggle"
+          type="checkbox"
+          data-theme-toggle
+          aria-label="切换深色模式"
+        />
+        <label for="site-shell-theme-toggle" title="切换深色模式">
+          <span class="site-theme-sun" aria-hidden="true">☀</span>
+          <span class="site-theme-moon" aria-hidden="true">☾</span>
+        </label>
+      </div>
+    </div>
   </div>
 </header>

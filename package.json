@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node ./scripts/compress-dist.mjs",
+    "build": "vite build && node ./scripts/copy-static.mjs && node ./scripts/compress-dist.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {

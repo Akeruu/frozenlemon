@@ -41,14 +41,14 @@
           <div class="profile">
             <a href="./"
               ><img src="image/镜子圆.webp" alt="Logo" />
-              <h2>速冻柠檬</h2></a
+              <h1>速冻柠檬</h1></a
             >
           </div>
           <div class="quotes"><span>多喝水 多运动</span></div>
         </div>
 
         <div class="archive-entry">
-          <a class="archive-link" href="archive/" target="_blank">归档 | Timeline</a>
+          <a class="archive-link" href="archive/">归档 | Timeline</a>
         </div>
 
         <!-- <hr /> -->
@@ -56,19 +56,19 @@
           <h4>空间</h4>
           <ul>
             <li class="nav-li">
-              <a href="podcast/" target="_blank" data-section-link="podcast">播客 | 潜在意识</a>
+              <a href="podcast/" data-section-link="podcast">播客 | 潜在意识</a>
             </li>
             <li class="nav-li">
-              <a href="photo/" target="_blank" data-section-link="photos">影像 | 日常记录</a>
+              <a href="photo/" data-section-link="photos">影像 | 日常记录</a>
             </li>
             <li class="nav-li">
-              <a href="meme/" target="_blank" data-section-link="meme">涂鸦 | Meme</a>
+              <a href="meme/" data-section-link="meme">涂鸦 | Meme</a>
             </li>
             <li class="nav-li">
-              <a href="blog/" target="_blank" data-section-link="blogs">博客 | 自留地</a>
+              <a href="blog/" data-section-link="blogs">博客 | 自留地</a>
             </li>
             <li class="nav-li">
-              <a href="about/" target="_blank"
+              <a href="about/"
                 >关于 | About me</a
               >
             </li>
@@ -92,7 +92,7 @@
     </aside>
 
     <div class="theme-toggle">
-      <input type="checkbox" id="js-theme-toggle" />
+      <input type="checkbox" id="js-theme-toggle" data-theme-toggle aria-label="切换深色模式" />
       <label for="js-theme-toggle">
         <span class="theme-toggle_handle"></span>
         <svg
@@ -129,22 +129,22 @@
     <nav class="nav-hidden">
       <ul>
         <li class="nav-li">
-          <a href="podcast/" target="_blank">播客</a>
+          <a href="podcast/">播客</a>
         </li>
         <li class="nav-li">
-          <a href="photo/" target="_blank">影像</a>
+          <a href="photo/">影像</a>
         </li>
         <li class="nav-li">
-          <a href="meme/" target="_blank">涂鸦</a>
+          <a href="meme/">涂鸦</a>
         </li>
         <li class="nav-li">
-          <a href="blog/" target="_blank">博客</a>
+          <a href="blog/">博客</a>
         </li>
         <li class="nav-li">
-          <a href="archive/" target="_blank">归档</a>
+          <a href="archive/">归档</a>
         </li>
         <li class="nav-li">
-          <a href="about/" target="_blank">关于</a>
+          <a href="about/">关于</a>
         </li>
       </ul>
     </nav>
@@ -157,7 +157,7 @@
 
         <section class="podcast-section" id="podcast">
           <h2 class="section-title">
-            <a href="podcast/" target="_blank">播客 | 潜在意识</a>
+            <a href="podcast/">播客 | 潜在意识</a>
           </h2>
           <div class="podcast-infor">
             <img src="image/潜在意识Logo.webp" alt="潜在意识播客封面" />
@@ -168,14 +168,17 @@
             </p>
           </div>
           <div class="podcast-episodes">
-            <!-- 这里将显示播客的节目列表 -->
+            <div class="podcast-player-placeholder" role="status">
+              <span class="play-button" aria-hidden="true">&#9658;</span>
+              <span>正在准备可在本页收听的节目…</span>
+            </div>
           </div>
         </section>
 
         <!-- 以下是图片并列展示 -->
         <section class="photos-section" id="photos">
           <h2 class="section-title">
-            <a href="photo/" target="_blank">影像 | 日常记录</a>
+            <a href="photo/">影像 | 日常记录</a>
           </h2>
 
           <div class="photos-content" data-content-source="photos">
@@ -355,7 +358,7 @@
         <!-- 以下是涂鸦板块 -->
         <section class="meme-section" id="meme">
           <h2 class="section-title">
-            <a href="meme/" target="_blank">涂鸦 | Meme</a>
+            <a href="meme/">涂鸦 | Meme</a>
           </h2>
 
           <div class="meme-content" data-content-source="memes">
@@ -379,22 +382,6 @@
               <img src="image/meme/小柴胡.webp" alt="小柴胡" />
               <div class="meme-info">
                 <span class="meme-title">小柴胡</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
-              <img src="image/meme/秋菊打官司2.webp" alt="秋菊打官司2" />
-              <div class="meme-info">
-                <span class="meme-title">秋菊打官司2</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
-              <img src="image/meme/猫猫赛博墓碑.webp" alt="猫猫赛博墓碑" />
-              <div class="meme-info">
-                <span class="meme-title">猫猫赛博墓碑</span>
                 <span class="date">2024-06-30</span>
               </div>
             </div>
@@ -433,22 +420,6 @@
               />
               <div class="meme-info">
                 <span class="meme-title">白云山登山第二次</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
-              <img src="image/meme/荔湾嫌疑人.webp" alt="荔湾嫌疑人" />
-              <div class="meme-info">
-                <span class="meme-title">荔湾嫌疑人</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
-              <img src="image/meme/波波票务.webp" alt="波波票务" />
-              <div class="meme-info">
-                <span class="meme-title">波波票务</span>
                 <span class="date">2024-06-30</span>
               </div>
             </div>
@@ -517,7 +488,7 @@
 
         <section class="blogs-section" id="blogs" data-content-source="blogs">
           <h2 class="section-title">
-            <a href="blog/" target="_blank">博客 | 自留地</a>
+            <a href="blog/">博客 | 自留地</a>
           </h2>
 
           <div class="blog-item">
@@ -530,8 +501,8 @@
             </div>
             <div class="blog-content">
               <h4>
-                <a href="blog/blue-veil/" target="_blank"
-                  >蓝色帷幔 ・ 一次复杂的情绪记录</a
+                <a href="blog/blue-veil/"
+                  >蓝色帷幔 ・ 一次住院的情绪记录</a
                 >
               </h4>
               <div class="blog-info">
@@ -554,7 +525,7 @@
             </div>
             <div class="blog-content">
               <h4>
-                <a href="blog/body-memory/" target="_blank">身体记忆</a>
+                <a href="blog/body-memory/">身体记忆</a>
               </h4>
               <div class="blog-info">
                 <div class="tags">
@@ -572,7 +543,7 @@
             </div>
             <div class="blog-content">
               <h4>
-                <a href="blog/hello-chrislee/" target="_blank"
+                <a href="blog/hello-chrislee/"
                   >Hello! Chris Lee</a
                 >
               </h4>
@@ -581,7 +552,7 @@
                   <a href="#blogs" class="tag">音乐</a>
                   <a href="#blogs" class="tag">碎碎念</a>
                 </div>
-                <span class="date">2024-06-30</span>
+                <span class="date">2020-02-08</span>
               </div>
             </div>
           </div>

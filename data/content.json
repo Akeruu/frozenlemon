@@ -18,19 +18,15 @@
     { "title": "经常画的人物小像", "date": "2024-06-30", "image": "image/meme/身体记忆.webp" },
     { "title": "炸毛波波", "date": "2024-06-30", "image": "image/meme/炸毛波波.webp" },
     { "title": "小柴胡", "date": "2024-06-30", "image": "image/meme/小柴胡.webp" },
-    { "title": "秋菊打官司2", "date": "2024-06-30", "image": "image/meme/秋菊打官司2.webp" },
-    { "title": "猫猫赛博墓碑", "date": "2024-06-30", "image": "image/meme/猫猫赛博墓碑.webp" },
     { "title": "白云山登山第一次", "date": "2024-06-30", "image": "image/meme/白云山登山第一次.webp" },
     { "title": "肥皂们", "date": "2024-06-30", "image": "image/meme/肥皂们.webp" },
     { "title": "健身计划", "date": "2024-06-30", "image": "image/meme/健身计划.webp" },
     { "title": "白云山登山第二次", "date": "2024-06-30", "image": "image/meme/白云山登山第二次.webp" },
-    { "title": "荔湾嫌疑人", "date": "2024-06-30", "image": "image/meme/荔湾嫌疑人.webp" },
-    { "title": "波波票务", "date": "2024-06-30", "image": "image/meme/波波票务.webp" },
     { "title": "人物画像", "date": "2024-06-30", "image": "image/meme/人物画像.webp" }
   ],
   "blogs": [
     {
-      "title": "蓝色帷幔 ・ 一次复杂的情绪记录",
+      "title": "蓝色帷幔 ・ 一次住院的情绪记录",
       "date": "2024-09-15",
       "cover": "image/blog/蓝色帷幔tiny.webp",
       "href": "blog/blue-veil/",
@@ -45,7 +41,7 @@
     },
     {
       "title": "Hello! Chris Lee",
-      "date": "2024-06-30",
+      "date": "2020-02-08",
       "cover": "image/blog/在吗.webp",
       "href": "blog/hello-chrislee/",
       "tags": ["音乐", "碎碎念"]
@@ -53,74 +49,60 @@
   ],
   "podcasts": [
     {
-      "title": "潜在意识｜近期更新 01",
-      "date": "2026-03-01",
-      "duration": "约 45 分钟",
-      "description": "关于个体与世界认知的一次对话。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "E007：砸烂自己的神像",
+      "date": "2026-03-18",
+      "duration": "12:38",
+      "description": "挑战因完美主义而启动困难，我需要砸烂自己的神像。",
+      "enclosure": "https://jt.ximalaya.com//GAqh4zINj_WkABAAAAR7pUIh.m4a?channel=rss&album_id=72549254&track_id=963786252&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/6977-audiofreehighqps/36/DF/GAqh4zINj_WkABAAAAR7pUIh.m4a"
     },
     {
-      "title": "潜在意识｜近期更新 02",
-      "date": "2026-02-20",
-      "duration": "约 38 分钟",
-      "description": "从日常经验聊到长期成长。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "E006：旅行计划是什么？大吃特吃 & 逛遍CD店！",
+      "date": "2025-01-24",
+      "duration": "37:50",
+      "description": "从旅行、美食聊到香港旺角的唱片店记忆。",
+      "enclosure": "https://jt.ximalaya.com//GKwRIRwLaXKUANM1PgNa5j02.m4a?channel=rss&album_id=72549254&track_id=799214387&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/4068-audiofreehighqps/50/E6/GKwRIRwLaXKUANM1PgNa5j02.m4a"
     },
     {
-      "title": "潜在意识｜近期更新 03",
-      "date": "2026-02-06",
-      "duration": "约 42 分钟",
-      "description": "关于关系、边界与表达。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "E005：我们随时可以选择，去实践自己说过的话",
+      "date": "2025-01-04",
+      "duration": "32:17",
+      "description": "回顾那些带来力量和改变的启发瞬间。",
+      "enclosure": "https://jt.ximalaya.com//GKwRINsLTtJ5ACAAAANMi6KF.mp3.m4a?channel=rss&album_id=72549254&track_id=790552130&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/1526-audiofreehighqps/F8/54/GKwRINsLTtJ5ACAAAANMi6KF.mp3"
     },
     {
-      "title": "潜在意识｜近期更新 04",
-      "date": "2026-01-26",
-      "duration": "约 35 分钟",
-      "description": "回到真实体验，重新理解自我。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "E004：帮助与被帮助，创造人与人的连结",
+      "date": "2024-07-16",
+      "duration": "27:27",
+      "description": "回溯过往，聊聊帮助与被帮助的矛盾和连结。",
+      "enclosure": "https://jt.ximalaya.com//GKwRIW4KbCnCAJlGbALx1zfF.m4a?channel=rss&album_id=72549254&track_id=741761685&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/fd99-audiofreehighqps/98/B2/GKwRIW4KbCnCAJlGbALx1zfF.m4a"
     },
     {
-      "title": "潜在意识｜近期更新 05",
-      "date": "2026-01-12",
-      "duration": "约 40 分钟",
-      "description": "关于创作与表达焦虑。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "E003：动画电影不仅只是子供向",
+      "date": "2024-07-04",
+      "duration": "26:19",
+      "description": "聊聊不局限于年龄标签的动画电影体验。",
+      "enclosure": "https://jt.ximalaya.com//GKwRIaIKXEW0AJLg_wLrzSyt.m4a?channel=rss&album_id=72549254&track_id=739038099&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/a37d-audiofreehighqps/87/3B/GKwRIaIKXEW0AJLg_wLrzSyt.m4a"
     },
     {
-      "title": "潜在意识｜近期更新 06",
-      "date": "2025-12-28",
-      "duration": "约 44 分钟",
-      "description": "年末复盘与新年提问。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "E002：日常之公园碎碎念",
+      "date": "2024-03-24",
+      "duration": "29:17",
+      "description": "久违更新的一集日常碎碎念。",
+      "enclosure": "https://jt.ximalaya.com//GKwRIUEJ1cLHACAAAAK8X4Gi.mp3.m4a?channel=rss&album_id=72549254&track_id=717155236&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/0533-audiofreehighqps/9F/BB/GKwRIUEJ1cLHACAAAAK8X4Gi.mp3"
     },
     {
-      "title": "潜在意识｜近期更新 07",
-      "date": "2025-12-15",
-      "duration": "约 33 分钟",
-      "description": "如何和情绪相处。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "E001：普鲁斯特问卷的一次尝试",
+      "date": "2022-11-18",
+      "duration": "55:29",
+      "description": "邀请朋友 Cindy 一同完成普鲁斯特问卷。",
+      "enclosure": "https://jt.ximalaya.com//GKwRIJIHTCAWACAAAAHN5r4y.mp3.m4a?channel=rss&album_id=72549254&track_id=588577261&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/4960-audiofreehighqps/07/64/GKwRIJIHTCAWACAAAAHN5r4y.mp3"
     },
     {
-      "title": "潜在意识｜近期更新 08",
-      "date": "2025-12-01",
-      "duration": "约 39 分钟",
-      "description": "从关系里看见自己。",
-      "link": "https://www.ximalaya.com/album/72549254"
-    },
-    {
-      "title": "潜在意识｜近期更新 09",
-      "date": "2025-11-18",
-      "duration": "约 47 分钟",
-      "description": "聊聊选择和不确定性。",
-      "link": "https://www.ximalaya.com/album/72549254"
-    },
-    {
-      "title": "潜在意识｜近期更新 10",
-      "date": "2025-11-03",
-      "duration": "约 36 分钟",
-      "description": "关于行动与反馈闭环。",
-      "link": "https://www.ximalaya.com/album/72549254"
+      "title": "试播集：关于《潜在意识》的起源与分享欲",
+      "date": "2022-11-17",
+      "duration": "10:53",
+      "description": "《潜在意识》的试播与起点。",
+      "enclosure": "https://jt.ximalaya.com//GKwRIUEHS5huACAAAAHNbQuX.mp3.m4a?channel=rss&album_id=72549254&track_id=588403858&uid=93211461&jt=https://aod.cos.tx.xmcdn.com/storages/5ef7-audiofreehighqps/22/EA/GKwRIUEHS5huACAAAAHNbQuX.mp3"
     }
   ]
 }

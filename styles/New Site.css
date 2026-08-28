@@ -1,11 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  min-width: 375px;
+  min-width: 0;
   background-color: var(--un-c-bg);
   color: rgb(var(--un-rc-invert));
   line-height: 1.65;
+  overflow-x: clip;
 }
 a {
   text-decoration: none;
@@ -28,16 +39,18 @@ ul {
 div.side {
   padding: 38.8px 45px;
   position: fixed;
+  inset: 0 auto auto 0;
+  width: 263.85px;
 }
 div.main {
   padding: clamp(24px, 3vw, 48px) clamp(20px, 6vw, 96px)
     clamp(32px, 5vw, 64px) clamp(20px, 3vw, 48px);
   margin-left: 263.85px;
   max-width: 1080px;
+  width: min(1080px, calc(100vw - 263.85px));
 }
 
 /* aide */
-div.side,
 nav.nav-part,
 div.tags-part {
   width: 173.85px;
@@ -57,14 +70,17 @@ div.tags-part {
   height: 50px;
   margin-right: 10px;
 }
-.profile h2 {
+.profile h1 {
   margin: 0;
   padding: 0;
+  font-size: 1.5rem;
   letter-spacing: 1.1px;
+  white-space: nowrap;
   /* color: #333; */
 }
 
 div.quotes span {
+  display: block;
   margin-left: 66px;
   /* color: #333; */
 }
@@ -707,8 +723,9 @@ label:focus-visible {
   position: relative;
   display: inline-block;
   width: 100%;
-  max-height: 542px; /* 设置最大高度 */
-  overflow: hidden; /* 隐藏超出部分 */
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--un-c-bg-weak);
 }
 
 .photo-item img,
@@ -747,8 +764,24 @@ label:focus-visible {
   display: none;
 }
 .photo-item:hover .photo-info,
-.meme-item:hover .meme-info {
+.meme-item:hover .meme-info,
+.photo-item:focus-within .photo-info,
+.meme-item:focus-within .meme-info {
   opacity: 1;
+}
+
+@media (hover: none) {
+  .photo-info,
+  .meme-info {
+    opacity: 1;
+  }
+}
+
+.content-error,
+.content-loading {
+  color: var(--un-c-text-light);
+  text-align: center;
+  padding: 24px 12px;
 }
 
 .photo-item img,
@@ -916,7 +949,7 @@ body.modal-open {
 
 /* photo-gpt and meme part*/
 /* 媒体查询：屏幕宽度小于 768px 时 */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   div.photos-content,
   div.meme-content {
     column-count: 1 !important; /* 单列布局 */
@@ -925,122 +958,345 @@ body.modal-open {
 }
 
 @media (max-width: 1200px) {
-  div.side,
   nav.nav-part,
   div.tags-part {
     width: 160px;
   }
 
+  div.side {
+    width: 228px;
+    padding: 32px 34px;
+  }
+
   div.main {
     margin-left: 228px;
     padding-right: 32px;
+    width: calc(100vw - 228px);
   }
 }
 
 @media (max-width: 1024px) {
+  body {
+    display: block;
+  }
+
   div.main {
     margin-left: 0;
     max-width: 100%;
+    width: 100%;
+    padding: 18px 20px 40px;
   }
 
   div.side {
     position: static;
     width: auto;
-    padding: 22px 20px 8px;
+    padding: 14px 76px 8px 20px;
+    border-left: 0;
+    box-shadow: none !important;
   }
 
-  nav.nav-part,
-  div.tags-part {
-    width: auto;
-  }
-
-  .archive-entry {
-    display: none;
-  }
-}
-
-/* 当屏幕宽度小于800px时，调整 aside 的显示和位置 */
-@media (max-width: 800px) {
-  body {
-    margin: 0;
-    padding: 0;
-    display: block;
-  }
-  div.side {
-    padding: 10px;
-    position: static;
-    display: flex;
-    flex-direction: column; /* 确保侧边栏内容纵向排列 */
-  }
-  div.main {
-    padding: 10px 16px;
-    margin-left: 0;
-  }
   div.whole-pro {
     display: flex;
-    flex-direction: column; /* 确保内容纵向排列 */
-  }
-  /* .podcast-infor {
-    display: flex;
     align-items: center;
-  } */
+    gap: 16px;
+  }
+
+  .profile {
+    justify-content: flex-start;
+  }
+
+  div.quotes span {
+    margin-left: 0;
+  }
+
+  .archive-entry,
   .nav-part,
   .tags-part {
     display: none;
   }
+
   .nav-hidden {
-    display: flex;
-    height: 88.4px;
-    margin-top: -30.4px;
-    margin-left: 194px;
-    margin-right: 16px;
-    align-items: center;
-    justify-content: flex-end;
+    display: block;
+    padding: 4px 16px 12px;
   }
+
   .nav-hidden ul {
-    padding: 10px 0 10px 10px;
-    margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 8px;
+    margin: 0;
+    padding: 0;
   }
+
   .nav-hidden li {
-    margin: 2px; /* 可选：设置横向间距 */
-    display: inline;
+    margin: 0;
   }
 
   .nav-hidden a {
     display: inline-block;
-    padding: 4px 8px;
+    padding: 6px 10px;
     border-radius: 999px;
     color: var(--nav-link-color, #1f2937);
   }
 
-  .nav-hidden a:hover {
+  .nav-hidden a:hover,
+  .nav-hidden a:focus-visible {
     color: var(--brand-primary, #0b1c7e);
     background: var(--brand-surface, #f8fbff);
   }
 
   .theme-toggle {
-    display: flex;
-    position: static;
-    justify-content: flex-end;
-    margin-top: -80px;
-    margin-right: 16px;
+    top: 20px;
+    right: 18px;
+  }
+}
+
+@media (max-width: 800px) {
+  div.side {
+    padding: 12px 68px 6px 16px;
+  }
+
+  div.main {
+    padding: 12px 16px 36px;
+  }
+
+  div.whole-pro {
+    gap: 12px;
+  }
+
+  .profile img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .profile h1 {
+    font-size: 1.35rem;
+  }
+
+  .quotes {
+    font-size: 0.9rem;
+  }
+
+  .nav-hidden {
+    padding: 6px 12px 12px;
+    border-bottom: 1px solid var(--un-c-divider);
+  }
+
+  .nav-hidden a {
+    padding: 6px 9px;
+    font-size: 0.92rem;
+  }
+
+  .theme-toggle {
+    top: 18px;
+    right: 16px;
+  }
+
+  section {
+    margin-bottom: 24px;
+    padding: 14px 12px;
   }
 
   div.photo-item,
   div.meme-item {
-    break-inside: avoid !important; /* 避免内容块被断开 */
-    /* margin-bottom: 20px; 图片和下方内容块之间的间距 */
-    position: relative !important;
-    display: inline-block !important;
+    max-height: none !important;
+    overflow: visible !important;
     width: 100%;
-    max-height: 542px !important; /* 设置最大高度 */
-    overflow: hidden !important; /* 隐藏超出部分 */
-    margin-bottom: 10px !important;
+    margin-bottom: 16px !important;
+    background: transparent;
   }
 
-  .scroll-to-top {
-    right: 16px;
-    bottom: 16px;
+  .photo-info,
+  .meme-info {
+    position: static;
+    justify-content: flex-start;
+    opacity: 1;
+    padding: 8px 2px 2px;
+    background: transparent;
+    color: var(--un-c-text-strong);
+  }
+
+  .blog-info {
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .podcast-infor {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .podcast-infor img {
+    margin: 0 auto 14px;
+  }
+
+  .podcast-about {
+    margin: 0;
+  }
+
+  .blog-info {
+    flex-direction: column;
+  }
+
+  .image-modal {
+    padding: 52px 14px 64px;
+  }
+
+  .image-modal-nav.prev {
+    left: 8px;
+  }
+
+  .image-modal-nav.next {
+    right: 8px;
+  }
+
+  .image-modal-caption {
+    width: calc(100% - 32px);
+    text-align: center;
+  }
+}
+
+/* Homepage alignment with the shared site design system. */
+.archive-entry {
+  border-color: var(--border-color);
+}
+
+.archive-link,
+.nav-hidden a,
+.nav-li a {
+  color: var(--text-main);
+}
+
+.archive-link {
+  color: var(--brand-primary);
+  background: var(--brand-surface);
+  border-color: var(--brand-border);
+}
+
+.archive-link:hover,
+.podcast-toggle-button:hover {
+  color: var(--brand-on-primary);
+  background: var(--brand-primary);
+}
+
+section {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.episode {
+  border-color: var(--border-color);
+}
+
+.title,
+.blog-item h4 a {
+  color: var(--text-strong);
+}
+
+.date,
+.duration,
+.description,
+.podcast-loading,
+.blog-info .date,
+.blog-filter-bar .filter-title {
+  color: var(--text-muted);
+}
+
+.play-button,
+.scroll-to-top {
+  color: var(--brand-on-primary);
+  background: var(--brand-primary);
+}
+
+.podcast-toggle-button,
+.more-button {
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.blog-item {
+  background: var(--surface-muted);
+  border-color: var(--border-color);
+  border-radius: var(--radius-medium);
+}
+
+.tags-part .tag,
+.blog-info .tag,
+.filter-chip {
+  color: var(--text-main);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+}
+
+.filter-chip.active {
+  color: var(--brand-on-primary);
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.dark-theme body {
+  color: var(--text-main);
+  background: linear-gradient(
+    180deg,
+    var(--page-background) 0%,
+    var(--page-background-end) 100%
+  );
+}
+
+.dark-theme a,
+.dark-theme .title,
+.dark-theme .blog-item h4 a {
+  color: var(--text-strong);
+}
+
+.dark-theme a:hover,
+.dark-theme .more-button:hover,
+.dark-theme .blog-item h4 a:hover {
+  color: var(--brand-hover);
+}
+
+.dark-theme section {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  border-color: var(--border-color);
+}
+
+.dark-theme .blog-item {
+  background: var(--surface-muted);
+}
+
+.dark-theme .photo-info,
+.dark-theme .meme-info {
+  color: #ffffff;
+}
+
+@media (max-width: 800px) {
+  .dark-theme .photo-info,
+  .dark-theme .meme-info {
+    color: var(--text-strong);
+  }
+}
+
+@media (max-width: 380px) {
+  div.whole-pro {
+    display: block;
+  }
+
+  .quotes {
+    margin: 4px 0 0 54px;
+  }
+
+  .nav-hidden ul {
+    gap: 2px 4px;
+  }
+
+  .nav-hidden a {
+    padding: 5px 7px;
+    font-size: 0.88rem;
   }
 }
 

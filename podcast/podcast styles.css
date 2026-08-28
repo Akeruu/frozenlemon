@@ -35,7 +35,7 @@ footer {
 }
 
 /* 播客样式 */
-.podcast-section h2 {
+.podcast-section .section-title {
   margin-top: 0;
   margin-bottom: 10px;
 }
@@ -167,3 +167,20 @@ footer {
   width: 0;
 }
 /* boke gpt */
+
+@media (max-width: 700px) {
+  main {
+    margin: 16px auto;
+    padding: 16px;
+  }
+
+  .podcast-infor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .date-duration {
+    gap: 12px;
+  }
+}
