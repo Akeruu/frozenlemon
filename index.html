@@ -3,31 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="速冻柠檬：记录播客、影像、涂鸦与博客的个人空间。"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light dark" />
     <title>速冻柠檬</title>
 
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
-    <!-- Slick CSS -->
-    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <link rel="preload" as="image" href="/frozenlemon/assets/%E6%BD%9C%E5%9C%A8%E6%84%8F%E8%AF%86Logo-BZs7erIJ.webp" />
+    <link rel="preload" as="image" href="/frozenlemon/assets/%E9%95%9C%E5%AD%90%E5%9C%86-DTydmDLn.webp" />
 
-    <link rel="stylesheet" href="styles/New Site.css" />
-
-    <link rel="icon" href="image/潜在意识Logo.png" type="image/png" />
+    <link rel="icon" href="/frozenlemon/assets/%E6%BD%9C%E5%9C%A8%E6%84%8F%E8%AF%86Logo-BZs7erIJ.webp" type="image/webp" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark-theme");
+          }
+        } catch (err) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/frozenlemon/assets/New Site-BA_0g4G6.js"></script>
+    <link rel="stylesheet" crossorigin href="/frozenlemon/assets/New Site-CHcTVc2E.css">
+    <link rel="stylesheet" crossorigin href="/frozenlemon/assets/main-BxXoszS_.css">
   </head>
   <body>
+    <a class="skip-link" href="#main-content">跳到主内容</a>
     <aside>
       <div class="side">
         <div class="whole-pro">
           <div class="profile">
-            <a href="https://akeruu.github.io/New-Site/"
-              ><img src="image/镜子圆.png" alt="Logo" />
-              <h2>速冻柠檬</h2></a
+            <a href="./"
+              ><img src="/frozenlemon/assets/%E9%95%9C%E5%AD%90%E5%9C%86-DTydmDLn.webp" alt="Logo" />
+              <h1>速冻柠檬</h1></a
             >
           </div>
           <div class="quotes"><span>多喝水 多运动</span></div>
+        </div>
+
+        <div class="archive-entry">
+          <a class="archive-link" href="archive/">归档 | Timeline</a>
         </div>
 
         <!-- <hr /> -->
@@ -35,19 +57,19 @@
           <h4>空间</h4>
           <ul>
             <li class="nav-li">
-              <a href="podcast/podcast.html" target="_blank">播客 | 潜在意识</a>
+              <a href="podcast/" data-section-link="podcast">播客 | 潜在意识</a>
             </li>
             <li class="nav-li">
-              <a href="photo/photo.html" target="_blank">影像 | 日常记录</a>
+              <a href="photo/" data-section-link="photos">影像 | 日常记录</a>
             </li>
             <li class="nav-li">
-              <a href="meme/meme.html" target="_blank">涂鸦 | Meme</a>
+              <a href="meme/" data-section-link="meme">涂鸦 | Meme</a>
             </li>
             <li class="nav-li">
-              <a href="blog/blog.html" target="_blank">博客 | 自留地</a>
+              <a href="blog/" data-section-link="blogs">博客 | 自留地</a>
             </li>
             <li class="nav-li">
-              <a href="about me/about me.html" target="_blank"
+              <a href="about/"
                 >关于 | About me</a
               >
             </li>
@@ -58,20 +80,20 @@
           <h4>标签</h4>
           <ul>
             <li class="tags-li first-line-tag">
-              <a href="#suisuinian" class="tag">碎碎念</a>
+              <a href="#blogs" class="tag" data-filter-tag="碎碎念">碎碎念</a>
             </li>
             <li class="tags-li first-line-tag">
-              <a href="richang" class="tag">日常</a>
+              <a href="#blogs" class="tag" data-filter-tag="日常">日常</a>
             </li>
-            <li class="tags-li"><a href="music" class="tag">音乐记录</a></li>
-            <li class="tags-li"><a href="rain" class="tag">雨天</a></li>
+            <li class="tags-li"><a href="#blogs" class="tag" data-filter-tag="音乐">音乐</a></li>
+            <li class="tags-li"><a href="#blogs" class="tag" data-filter-tag="all">全部</a></li>
           </ul>
         </div>
       </div>
     </aside>
 
     <div class="theme-toggle">
-      <input type="checkbox" id="js-theme-toggle" />
+      <input type="checkbox" id="js-theme-toggle" data-theme-toggle aria-label="切换深色模式" />
       <label for="js-theme-toggle">
         <span class="theme-toggle_handle"></span>
         <svg
@@ -108,35 +130,38 @@
     <nav class="nav-hidden">
       <ul>
         <li class="nav-li">
-          <a href="podcast/podcast.html" target="_blank">播客</a>
+          <a href="podcast/">播客</a>
         </li>
         <li class="nav-li">
-          <a href="photo/photo.html" target="_blank">影像</a>
+          <a href="photo/">影像</a>
         </li>
         <li class="nav-li">
-          <a href="meme/meme.html" target="_blank">涂鸦</a>
+          <a href="meme/">涂鸦</a>
         </li>
         <li class="nav-li">
-          <a href="blog/blog.html" target="_blank">博客</a>
+          <a href="blog/">博客</a>
         </li>
         <li class="nav-li">
-          <a href="about me/about me.html" target="_blank">关于</a>
+          <a href="archive/">归档</a>
+        </li>
+        <li class="nav-li">
+          <a href="about/">关于</a>
         </li>
       </ul>
     </nav>
 
-    <main>
+    <main id="main-content">
       <div class="main">
         <!-- <section class="navbar">
           <button id="theme-toggle">切换主题</button>
         </section> -->
 
-        <section class="podcast-section">
+        <section class="podcast-section" id="podcast">
           <h2 class="section-title">
-            <a href="podcast/podcast.html" target="_blank">播客 | 潜在意识</a>
+            <a href="podcast/">播客 | 潜在意识</a>
           </h2>
           <div class="podcast-infor">
-            <img src="image/潜在意识Logo.png" />
+            <img src="/frozenlemon/assets/%E6%BD%9C%E5%9C%A8%E6%84%8F%E8%AF%86Logo-BZs7erIJ.webp" alt="潜在意识播客封面" />
             <p class="podcast-about">
               《潜在意识》是一档好奇自我与世界万物的节目。<br />
               <br />
@@ -144,19 +169,22 @@
             </p>
           </div>
           <div class="podcast-episodes">
-            <!-- 这里将显示播客的节目列表 -->
+            <div class="podcast-player-placeholder" role="status">
+              <span class="play-button" aria-hidden="true">&#9658;</span>
+              <span>正在准备可在本页收听的节目…</span>
+            </div>
           </div>
         </section>
 
         <!-- 以下是图片并列展示 -->
-        <section class="photos-section">
+        <section class="photos-section" id="photos">
           <h2 class="section-title">
-            <a href="photo/photo.html" target="_blank">影像 | 日常记录</a>
+            <a href="photo/">影像 | 日常记录</a>
           </h2>
 
-          <div class="photos-content">
+          <div class="photos-content" data-content-source="photos">
             <div class="photo-item">
-              <img src="image/白云山天空.jpg" alt="白云山天空" />
+              <img src="/frozenlemon/assets/%E7%99%BD%E4%BA%91%E5%B1%B1%E5%A4%A9%E7%A9%BA-DvutdKAZ.webp" alt="白云山天空" />
               <div class="photo-info">
                 <span class="photo-title">白云山天空</span>
                 <span class="date">2024-06-30</span>
@@ -164,7 +192,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/千灯湖上亭子.jpg" alt="千灯湖上亭子" />
+              <img src="/frozenlemon/assets/%E5%8D%83%E7%81%AF%E6%B9%96%E4%B8%8A%E4%BA%AD%E5%AD%90-DSF_a9Vb.webp" alt="千灯湖上亭子" />
               <div class="photo-info">
                 <span class="photo-title">千灯湖上亭子</span>
                 <span class="date">2024-06-30</span>
@@ -172,7 +200,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/白云山小路.jpg" alt="白云山小路" />
+              <img src="/frozenlemon/assets/%E7%99%BD%E4%BA%91%E5%B1%B1%E5%B0%8F%E8%B7%AF-DW8Qmr0d.webp" alt="白云山小路" />
               <div class="photo-info">
                 <span class="photo-title">白云山小路</span>
                 <span class="date">2024-06-30</span>
@@ -180,21 +208,21 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/千灯湖蓝色天空.jpg" alt="千灯湖蓝色天空" />
+              <img src="/frozenlemon/assets/%E5%8D%83%E7%81%AF%E6%B9%96%E8%93%9D%E8%89%B2%E5%A4%A9%E7%A9%BA-BSJx5L6u.webp" alt="千灯湖蓝色天空" />
               <div class="photo-info">
                 <span class="photo-title">千灯湖蓝色天空</span>
                 <span class="date">2024-06-30</span>
               </div>
             </div>
             <div class="photo-item">
-              <img src="image/彩虹2.jpg" alt="彩虹2" />
+              <img src="/frozenlemon/assets/%E5%BD%A9%E8%99%B92-B7alHHAi.webp" alt="彩虹2" />
               <div class="photo-info">
                 <span class="photo-title">遇见彩虹yeah</span>
                 <span class="date">2024-06-30</span>
               </div>
             </div>
             <div class="photo-item">
-              <img src="image/云与建筑.jpg" alt="云与建筑" />
+              <img src="/frozenlemon/assets/%E4%BA%91%E4%B8%8E%E5%BB%BA%E7%AD%91-BdIvSYV_.webp" alt="云与建筑" />
               <div class="photo-info">
                 <span class="photo-title">云与建筑</span>
                 <span class="date">2024-06-30</span>
@@ -202,7 +230,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/灯笼树.jpg" alt="灯笼树" />
+              <img src="/frozenlemon/assets/%E7%81%AF%E7%AC%BC%E6%A0%91-ANCGQThQ.webp" alt="灯笼树" />
               <div class="photo-info">
                 <span class="photo-title">灯笼树</span>
                 <span class="date">2024-06-30</span>
@@ -210,7 +238,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/白云山树叶.jpg" alt="白云山树叶" />
+              <img src="/frozenlemon/assets/%E7%99%BD%E4%BA%91%E5%B1%B1%E6%A0%91%E5%8F%B6-CJV4piLZ.webp" alt="白云山树叶" />
               <div class="photo-info">
                 <span class="photo-title">白云山树叶</span>
                 <span class="date">2024-06-30</span>
@@ -218,7 +246,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/白云山山坡.jpg" alt="白云山山坡" />
+              <img src="/frozenlemon/assets/%E7%99%BD%E4%BA%91%E5%B1%B1%E5%B1%B1%E5%9D%A1-B5DbnJCa.webp" alt="白云山山坡" />
               <div class="photo-info">
                 <span class="photo-title">白云山山坡</span>
                 <span class="date">2024-06-30</span>
@@ -226,7 +254,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/千灯湖建筑.jpg" alt="千灯湖建筑" />
+              <img src="/frozenlemon/assets/%E5%8D%83%E7%81%AF%E6%B9%96%E5%BB%BA%E7%AD%91-CFm7ETyA.webp" alt="千灯湖建筑" />
               <div class="photo-info">
                 <span class="photo-title">千灯湖建筑</span>
                 <span class="date">2024-06-30</span>
@@ -234,7 +262,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/千灯湖上塔.jpg" alt="千灯湖上塔" />
+              <img src="/frozenlemon/assets/%E5%8D%83%E7%81%AF%E6%B9%96%E4%B8%8A%E5%A1%94-lBm4UL3Q.webp" alt="千灯湖上塔" />
               <div class="photo-info">
                 <span class="photo-title">千灯湖上塔</span>
                 <span class="date">2024-06-30</span>
@@ -242,7 +270,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/摩托车后.jpg" alt="摩托车后" />
+              <img src="/frozenlemon/assets/%E6%91%A9%E6%89%98%E8%BD%A6%E5%90%8E-B5aGmp9O.webp" alt="摩托车后" />
               <div class="photo-info">
                 <span class="photo-title">摩托车后</span>
                 <span class="date">2024-06-30</span>
@@ -250,7 +278,7 @@
             </div>
 
             <div class="photo-item">
-              <img src="image/湖中喷泉.jpg" alt="湖中喷泉" />
+              <img src="/frozenlemon/assets/%E6%B9%96%E4%B8%AD%E5%96%B7%E6%B3%89-CHwSURW4.webp" alt="湖中喷泉" />
               <div class="photo-info">
                 <span class="photo-title">湖中喷泉</span>
                 <span class="date">2024-06-30</span>
@@ -265,7 +293,7 @@
 
           <div class="photos-content slick-slider">
             <div class="photo-item slick-slide">
-              <img src="image/白云山天空.jpg" alt="白云山天空" />
+              <img src="image/白云山天空.webp" alt="白云山天空" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">白云山天空</span>
                 <span class="date">2024-06-30</span>
@@ -273,7 +301,7 @@
             </div>
 
             <div class="photo-item slick-slide">
-              <img src="image/千灯湖上亭子.jpg" alt="千灯湖上亭子" />
+              <img src="image/千灯湖上亭子.webp" alt="千灯湖上亭子" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">千灯湖上亭子</span>
                 <span class="date">2024-06-30</span>
@@ -281,7 +309,7 @@
             </div>
 
             <div class="photo-item slick-slide">
-              <img src="image/白云山小路.jpg" alt="白云山小路" />
+              <img src="image/白云山小路.webp" alt="白云山小路" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">白云山小路</span>
                 <span class="date">2024-06-30</span>
@@ -289,21 +317,21 @@
             </div>
 
             <div class="photo-item slick-slide">
-              <img src="image/千灯湖蓝色天空.jpg" alt="千灯湖蓝色天空" />
+              <img src="image/千灯湖蓝色天空.webp" alt="千灯湖蓝色天空" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">千灯湖蓝色天空</span>
                 <span class="date">2024-06-30</span>
               </div>
             </div>
             <div class="photo-item slick-slide">
-              <img src="image/彩虹2.jpg" alt="彩虹2" />
+              <img src="image/彩虹2.webp" alt="彩虹2" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">遇见彩虹yeah</span>
                 <span class="date">2024-06-30</span>
               </div>
             </div>
             <div class="photo-item slick-slide">
-              <img src="image/云与建筑.jpg" alt="云与建筑" />
+              <img src="image/云与建筑.webp" alt="云与建筑" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">云与建筑</span>
                 <span class="date">2024-06-30</span>
@@ -311,7 +339,7 @@
             </div>
 
             <div class="photo-item slick-slide">
-              <img src="image/灯笼树.jpg" alt="灯笼树" />
+              <img src="image/灯笼树.webp" alt="灯笼树" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">灯笼树</span>
                 <span class="date">2024-06-30</span>
@@ -319,7 +347,7 @@
             </div>
 
             <div class="photo-item slick-slide">
-              <img src="image/白云山树叶.jpg" alt="白云山树叶" />
+              <img src="image/白云山树叶.webp" alt="白云山树叶" />
               <div class="photo-info slick-slide-info">
                 <span class="photo-title">白云山树叶</span>
                 <span class="date">2024-06-30</span>
@@ -329,14 +357,14 @@
         </section> -->
 
         <!-- 以下是涂鸦板块 -->
-        <section class="meme-section">
+        <section class="meme-section" id="meme">
           <h2 class="section-title">
-            <a href="meme/meme.html" target="_blank">涂鸦 | Meme</a>
+            <a href="meme/">涂鸦 | Meme</a>
           </h2>
 
-          <div class="meme-content">
+          <div class="meme-content" data-content-source="memes">
             <div class="meme-item">
-              <img src="image/meme/身体记忆.jpg" alt="经常画的人物小像" />
+              <img src="/frozenlemon/assets/%E8%BA%AB%E4%BD%93%E8%AE%B0%E5%BF%86-BzmxsIm4.webp" alt="经常画的人物小像" />
               <div class="meme-info">
                 <span class="meme-title">经常画的人物小像</span>
                 <span class="date">2024-06-30</span>
@@ -344,7 +372,7 @@
             </div>
 
             <div class="meme-item">
-              <img src="image/meme/炸毛波波.jpg" alt="炸毛波波" />
+              <img src="/frozenlemon/assets/%E7%82%B8%E6%AF%9B%E6%B3%A2%E6%B3%A2-vzFsV71c.webp" alt="炸毛波波" />
               <div class="meme-info">
                 <span class="meme-title">炸毛波波</span>
                 <span class="date">2024-06-30</span>
@@ -352,7 +380,7 @@
             </div>
 
             <div class="meme-item">
-              <img src="image/meme/小柴胡.png" alt="小柴胡" />
+              <img src="/frozenlemon/assets/%E5%B0%8F%E6%9F%B4%E8%83%A1-FPbrxOq9.webp" alt="小柴胡" />
               <div class="meme-info">
                 <span class="meme-title">小柴胡</span>
                 <span class="date">2024-06-30</span>
@@ -360,24 +388,8 @@
             </div>
 
             <div class="meme-item">
-              <img src="image/meme/秋菊打官司2.jpg" alt="秋菊打官司2" />
-              <div class="meme-info">
-                <span class="meme-title">秋菊打官司2</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
-              <img src="image/meme/猫猫赛博墓碑.jpg" alt="猫猫赛博墓碑" />
-              <div class="meme-info">
-                <span class="meme-title">猫猫赛博墓碑</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
               <img
-                src="image/meme/白云山登山第一次.png"
+                src="/frozenlemon/assets/%E7%99%BD%E4%BA%91%E5%B1%B1%E7%99%BB%E5%B1%B1%E7%AC%AC%E4%B8%80%E6%AC%A1-C3sY1nMw.webp"
                 alt="白云山登山第一次"
               />
               <div class="meme-info">
@@ -387,7 +399,7 @@
             </div>
 
             <div class="meme-item">
-              <img src="image/meme/肥皂们.jpg" alt="肥皂们" />
+              <img src="/frozenlemon/assets/%E8%82%A5%E7%9A%82%E4%BB%AC-BsFHQ46y.webp" alt="肥皂们" />
               <div class="meme-info">
                 <span class="meme-title">肥皂们</span>
                 <span class="date">2024-06-30</span>
@@ -395,7 +407,7 @@
             </div>
 
             <div class="meme-item">
-              <img src="image/meme/健身计划.png" alt="健身计划" />
+              <img src="/frozenlemon/assets/%E5%81%A5%E8%BA%AB%E8%AE%A1%E5%88%92-CZQC6vkl.webp" alt="健身计划" />
               <div class="meme-info">
                 <span class="meme-title">健身计划</span>
                 <span class="date">2024-06-30</span>
@@ -404,7 +416,7 @@
 
             <div class="meme-item">
               <img
-                src="image/meme/白云山登山第二次.png"
+                src="/frozenlemon/assets/%E7%99%BD%E4%BA%91%E5%B1%B1%E7%99%BB%E5%B1%B1%E7%AC%AC%E4%BA%8C%E6%AC%A1-CgUvG5zy.webp"
                 alt="白云山登山第二次"
               />
               <div class="meme-info">
@@ -414,23 +426,7 @@
             </div>
 
             <div class="meme-item">
-              <img src="image/meme/荔湾嫌疑人.jpg" alt="荔湾嫌疑人" />
-              <div class="meme-info">
-                <span class="meme-title">荔湾嫌疑人</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
-              <img src="image/meme/波波票务.jpg" alt="波波票务" />
-              <div class="meme-info">
-                <span class="meme-title">波波票务</span>
-                <span class="date">2024-06-30</span>
-              </div>
-            </div>
-
-            <div class="meme-item">
-              <img src="image/meme/人物画像.png" alt="人物画像" />
+              <img src="/frozenlemon/assets/%E4%BA%BA%E7%89%A9%E7%94%BB%E5%83%8F-CJHkaBNo.webp" alt="人物画像" />
               <div class="meme-info">
                 <span class="meme-title">人物画像</span>
                 <span class="date">2024-06-30</span>
@@ -444,14 +440,14 @@
 
           <div class="blog-item">
             <div class="blog-cover-wrapper">
-              <img src="image/蓝色帷幔tiny.jpg" class="blog-cover" />
+              <img src="image/蓝色帷幔tiny.webp" class="blog-cover" />
             </div>
             <div class="blog-content">
               <h4><a href="">蓝色帷幔</a></h4>
               <div class="blog-info">
                 <div class="tags">
-                  <a href="richang" class="tag">日常</a>
-                  <a href="susuinian" class="tag">碎碎念</a>
+                  <a href="#blogs" class="tag">日常</a>
+                  <a href="#blogs" class="tag">碎碎念</a>
                 </div>
                 <span class="date">2024-09-15</span>
               </div>
@@ -460,14 +456,14 @@
 
           <div class="blog-item">
             <div class="blog-cover-wrapper">
-              <img src="image/灯笼树.jpg" class="blog-cover" />
+              <img src="image/灯笼树.webp" class="blog-cover" />
             </div>
             <div class="blog-content">
               <h4><a href="">小时候骑单车趣事</a></h4>
               <div class="blog-info">
                 <div class="tags">
-                  <a href="richang" class="tag">日常</a>
-                  <a href="susuinian" class="tag">雨天</a>
+                  <a href="#blogs" class="tag">日常</a>
+                  <a href="#blogs" class="tag">雨天</a>
                 </div>
                 <span class="date">2024-06-10</span>
               </div>
@@ -476,14 +472,14 @@
 
           <div class="blog-item">
             <div class="blog-cover-wrapper">
-              <img src="image/千灯湖建筑.jpg" class="blog-cover" />
+              <img src="image/千灯湖建筑.webp" class="blog-cover" />
             </div>
             <div class="blog-content">
               <h4><a href="">如果我的耳机只能播放一首歌</a></h4>
               <div class="blog-info">
                 <div class="tags">
-                  <a href="richang" class="tag">音乐</a>
-                  <a href="susuinian" class="tag">碎碎念</a>
+                  <a href="#blogs" class="tag">音乐</a>
+                  <a href="#blogs" class="tag">碎碎念</a>
                 </div>
                 <span class="date">2024-06-30</span>
               </div>
@@ -491,25 +487,29 @@
           </div>
         </section> -->
 
-        <section class="blogs-section">
+        <section class="blogs-section" id="blogs" data-content-source="blogs">
           <h2 class="section-title">
-            <a href="blog/blog.html" target="_blank">博客 | 自留地</a>
+            <a href="blog/">博客 | 自留地</a>
           </h2>
 
           <div class="blog-item">
             <div class="blog-cover-wrapper">
-              <img src="image/blog/蓝色帷幔tiny.jpg" class="blog-cover" />
+              <img
+                src="/frozenlemon/assets/%E8%93%9D%E8%89%B2%E5%B8%B7%E5%B9%94tiny-CTX5zPE6.webp"
+                class="blog-cover"
+                alt="蓝色帷幔封面"
+              />
             </div>
             <div class="blog-content">
               <h4>
-                <a href="blog/blue-veil.html" target="_blank"
-                  >蓝色帷幔 ・ 一次复杂的情绪记录</a
+                <a href="blog/blue-veil/"
+                  >蓝色帷幔 ・ 一次住院的情绪记录</a
                 >
               </h4>
               <div class="blog-info">
                 <div class="tags">
-                  <a href="richang" class="tag">日常</a>
-                  <a href="susuinian" class="tag">碎碎念</a>
+                  <a href="#blogs" class="tag">日常</a>
+                  <a href="#blogs" class="tag">碎碎念</a>
                 </div>
                 <span class="date">2024-09-15</span>
               </div>
@@ -518,16 +518,20 @@
 
           <div class="blog-item">
             <div class="blog-cover-wrapper">
-              <img src="image/blog/身体记忆.jpg" class="blog-cover" />
+              <img
+                src="/frozenlemon/assets/%E8%BA%AB%E4%BD%93%E8%AE%B0%E5%BF%86-BzmxsIm4.webp"
+                class="blog-cover"
+                alt="身体记忆封面"
+              />
             </div>
             <div class="blog-content">
               <h4>
-                <a href="blog/body-memory.html" target="_blank">身体记忆</a>
+                <a href="blog/body-memory/">身体记忆</a>
               </h4>
               <div class="blog-info">
                 <div class="tags">
-                  <a href="richang" class="tag">日常</a>
-                  <a href="susuinian" class="tag">自我</a>
+                  <a href="#blogs" class="tag">日常</a>
+                  <a href="#blogs" class="tag">自我</a>
                 </div>
                 <span class="date">2022-09-20</span>
               </div>
@@ -536,20 +540,20 @@
 
           <div class="blog-item">
             <div class="blog-cover-wrapper">
-              <img src="image/blog/在吗.jpg" class="blog-cover" />
+              <img src="/frozenlemon/assets/%E5%9C%A8%E5%90%97-Bz3sv7YE.webp" class="blog-cover" alt="在吗封面" />
             </div>
             <div class="blog-content">
               <h4>
-                <a href="blog/Hello-ChrisLee.html" target="_blank"
+                <a href="blog/hello-chrislee/"
                   >Hello! Chris Lee</a
                 >
               </h4>
               <div class="blog-info">
                 <div class="tags">
-                  <a href="richang" class="tag">音乐</a>
-                  <a href="susuinian" class="tag">碎碎念</a>
+                  <a href="#blogs" class="tag">音乐</a>
+                  <a href="#blogs" class="tag">碎碎念</a>
                 </div>
-                <span class="date">2024-06-30</span>
+                <span class="date">2020-02-08</span>
               </div>
             </div>
           </div>
@@ -557,8 +561,5 @@
       </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="slick/slick.min.js"></script>
-    <script src="scripts/New Site.js"></script>
   </body>
 </html>

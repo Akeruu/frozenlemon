@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akeruu.github.io/frozenlemon/sitemap.xml
