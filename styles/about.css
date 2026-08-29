@@ -1,0 +1,18 @@
+.about-section article {
+  max-width: 42rem;
+  margin: 0 auto;
+  color: var(--text-main);
+  font-family: var(--font-reading);
+  font-size: var(--font-size-reading);
+  line-height: var(--line-height-reading);
+  letter-spacing: 0.012em;
+}
+
+.about-section p {
+  margin: 0 0 1.3em;
+  text-wrap: pretty;
+}
+
+.about-section p:last-child {
+  margin-bottom: 0;
+}

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   ensureFavicon();
   initThemeToggle();
   await initDataDrivenContent();
+  await initAlternatingGalleryLayout();
   initBlogTagFilter();
   initSidebarTagQuickJump();
   initHomeSectionIndicator();
@@ -19,15 +20,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 let contentCache = null;
-const HIDDEN_MEME_TITLES = new Set([
-  "波波票务",
-  "荔湾嫌疑人",
-  "秋菊打官司2",
-  "猫猫赛博墓碑"
-]);
 
-function getVisibleMemes(items) {
-  return items.filter((item) => !HIDDEN_MEME_TITLES.has(item.title));
+function sortNewestFirst(items) {
+  if (!Array.isArray(items)) return [];
+
+  return items
+    .map((item, index) => ({ item, index, time: Date.parse(item.date) }))
+    .sort((a, b) => {
+      const aHasDate = Number.isFinite(a.time);
+      const bHasDate = Number.isFinite(b.time);
+
+      if (aHasDate && bHasDate && a.time !== b.time) return b.time - a.time;
+      if (aHasDate !== bHasDate) return aHasDate ? -1 : 1;
+      return a.index - b.index;
+    })
+    .map(({ item }) => item);
 }
 
 function getSiteBasePath() {
@@ -60,7 +67,14 @@ async function loadContentData() {
   if (!response.ok) {
     throw new Error("Failed to load content.json");
   }
-  contentCache = await response.json();
+  const data = await response.json();
+  contentCache = {
+    ...data,
+    photos: sortNewestFirst(data.photos),
+    memes: sortNewestFirst(data.memes),
+    blogs: sortNewestFirst(data.blogs),
+    podcasts: sortNewestFirst(data.podcasts)
+  };
   return contentCache;
 }
 
@@ -75,7 +89,7 @@ async function initDataDrivenContent() {
       if (source === "photos") {
         renderPhotoItems(node, data.photos || []);
       } else if (source === "memes") {
-        renderMemeItems(node, getVisibleMemes(data.memes || []));
+        renderMemeItems(node, data.memes || []);
       } else if (source === "blogs") {
         renderBlogItems(node, data.blogs || []);
       }
@@ -135,6 +149,7 @@ function renderBlogItems(section, items) {
         <h4>
           <a href="${articleHref}">${escapeHtml(item.title)}</a>
         </h4>
+        <p class="blog-excerpt">${escapeHtml(item.excerpt || "")}</p>
         <div class="blog-info">
           <div class="tags">
             ${item.tags
@@ -150,6 +165,80 @@ function renderBlogItems(section, items) {
     `;
     section.appendChild(card);
   });
+}
+
+async function initAlternatingGalleryLayout() {
+  const galleries = Array.from(
+    document.querySelectorAll(".photos-content, .meme-content")
+  );
+  if (!galleries.length) return;
+
+  const images = galleries.flatMap((gallery) =>
+    Array.from(gallery.querySelectorAll("img"))
+  );
+  await Promise.allSettled(
+    images.map((image) => {
+      if (image.complete) return image.decode?.() || Promise.resolve();
+      return new Promise((resolve) => {
+        image.addEventListener("load", resolve, { once: true });
+        image.addEventListener("error", resolve, { once: true });
+      });
+    })
+  );
+
+  const desktopLayout = window.matchMedia("(min-width: 801px)");
+
+  const resetGallery = (gallery, items) => {
+    gallery.classList.remove("alternating-masonry");
+    gallery.style.removeProperty("height");
+    items.forEach((item) => {
+      item.style.removeProperty("width");
+      item.style.removeProperty("top");
+      item.style.removeProperty("left");
+    });
+  };
+
+  const layoutGallery = (gallery) => {
+    const items = Array.from(
+      gallery.querySelectorAll(":scope > .photo-item, :scope > .meme-item")
+    );
+    if (!items.length || !desktopLayout.matches) {
+      resetGallery(gallery, items);
+      return;
+    }
+
+    gallery.classList.add("alternating-masonry");
+    const gap = Number.parseFloat(getComputedStyle(gallery).columnGap) || 20;
+    const columnWidth = (gallery.clientWidth - gap) / 2;
+    const columnHeights = [0, 0];
+
+    items.forEach((item, index) => {
+      const column = index % 2;
+      item.style.width = `${columnWidth}px`;
+      item.style.left = `${column * (columnWidth + gap)}px`;
+    });
+
+    items.forEach((item, index) => {
+      const column = index % 2;
+      item.style.top = `${columnHeights[column]}px`;
+      columnHeights[column] += item.offsetHeight + gap;
+    });
+
+    gallery.style.height = `${Math.max(...columnHeights) - gap}px`;
+  };
+
+  let layoutFrame = 0;
+  const layoutAll = () => {
+    window.cancelAnimationFrame(layoutFrame);
+    layoutFrame = window.requestAnimationFrame(() => {
+      galleries.forEach(layoutGallery);
+    });
+  };
+
+  images.forEach((image) => image.addEventListener("load", layoutAll));
+  desktopLayout.addEventListener("change", layoutAll);
+  window.addEventListener("resize", layoutAll, { passive: true });
+  layoutAll();
 }
 
 function getPreferredTheme() {
@@ -700,7 +789,7 @@ async function initArchivePage() {
       tags: ["影像", "照片"],
       type: "影像"
     }));
-    const memes = getVisibleMemes(data.memes || []).map((meme) => ({
+    const memes = (data.memes || []).map((meme) => ({
       title: meme.title,
       date: meme.date,
       dateObj: new Date(meme.date),
@@ -1019,19 +1108,9 @@ function initReadingProgress(article) {
 }
 
 function initArticleToc(main, article) {
-  let headings = Array.from(article.querySelectorAll("h2, h3"));
+  const headings = Array.from(article.querySelectorAll("h2, h3"));
 
-  if (!headings.length) {
-    const start = document.createElement("span");
-    start.id = "section-start";
-    const end = document.createElement("span");
-    end.id = "section-end";
-    article.prepend(start);
-    article.appendChild(end);
-    headings = [start, end];
-    start.dataset.title = "开头";
-    end.dataset.title = "结尾";
-  }
+  if (!headings.length) return;
 
   const toc = document.createElement("nav");
   toc.className = "article-toc";
