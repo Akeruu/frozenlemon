@@ -1,5 +1,14 @@
 {
   "photos": [
+    { "title": "依旧非常喜欢海边", "date": "2026-08-29", "image": "image/依旧非常喜欢海边.webp" },
+    { "title": "屯门蝴蝶湾的夜晚", "date": "2026-08-29", "image": "image/屯门蝴蝶湾的夜晚.webp" },
+    { "title": "怀念这片静谧", "date": "2026-08-29", "image": "image/怀念这片静谧.webp" },
+    { "title": "愉快的聊天", "date": "2026-08-29", "image": "image/愉快的聊天.webp" },
+    { "title": "打完球的草坪与天空", "date": "2026-08-29", "image": "image/打完球的草坪与天空.webp" },
+    { "title": "江边栈桥", "date": "2026-08-29", "image": "image/江边栈桥.webp" },
+    { "title": "沙滩上的孤独患者", "date": "2026-08-29", "image": "image/沙滩上的孤独患者.webp" },
+    { "title": "第一排视角看李星宇", "date": "2026-08-29", "image": "image/第一排视角看李星宇.webp" },
+    { "title": "鲸鱼马戏团 live", "date": "2026-08-29", "image": "image/鲸鱼马戏团live.webp" },
     { "title": "白云山天空", "date": "2024-06-30", "image": "image/白云山天空.webp" },
     { "title": "千灯湖上亭子", "date": "2024-06-30", "image": "image/千灯湖上亭子.webp" },
     { "title": "白云山小路", "date": "2024-06-30", "image": "image/白云山小路.webp" },
@@ -15,6 +24,7 @@
     { "title": "湖中喷泉", "date": "2024-06-30", "image": "image/湖中喷泉.webp" }
   ],
   "memes": [
+    { "title": "灵魂画手之 Potato", "date": "2026-08-29", "image": "image/meme/灵魂画手之Potato.webp" },
     { "title": "经常画的人物小像", "date": "2024-06-30", "image": "image/meme/身体记忆.webp" },
     { "title": "炸毛波波", "date": "2024-06-30", "image": "image/meme/炸毛波波.webp" },
     { "title": "小柴胡", "date": "2024-06-30", "image": "image/meme/小柴胡.webp" },
@@ -26,10 +36,19 @@
   ],
   "blogs": [
     {
+      "title": "遥远的那片海",
+      "date": "2026-08-29",
+      "cover": "image/blog/遥远的那片海.webp",
+      "href": "blog/distant-sea/",
+      "excerpt": "我们每天遇到的人和事都在重新塑造着我们，而认知到这种变化或许总会慢半拍。",
+      "tags": ["日常", "自我"]
+    },
+    {
       "title": "蓝色帷幔 ・ 一次住院的情绪记录",
       "date": "2024-09-15",
       "cover": "image/blog/蓝色帷幔tiny.webp",
       "href": "blog/blue-veil/",
+      "excerpt": "窗外阳光透过帘子，是淡淡的蓝色，像天空，也像海洋。",
       "tags": ["日常", "碎碎念"]
     },
     {
@@ -37,6 +56,7 @@
       "date": "2022-09-20",
       "cover": "image/blog/身体记忆.webp",
       "href": "blog/body-memory/",
+      "excerpt": "我们曾期待的青春成长，以一种讨厌的姿态悄然到来。",
       "tags": ["日常", "自我"]
     },
     {
@@ -44,6 +64,7 @@
       "date": "2020-02-08",
       "cover": "image/blog/在吗.webp",
       "href": "blog/hello-chrislee/",
+      "excerpt": "因为她，一路上我认识了很多小伙伴，也见识了许多不一般的风景。",
       "tags": ["音乐", "碎碎念"]
     }
   ],

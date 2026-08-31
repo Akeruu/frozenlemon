@@ -28,6 +28,7 @@ export default defineConfig({
         blog: resolve(rootDir, "blog/index.html"),
         about: resolve(rootDir, "about/index.html"),
         archive: resolve(rootDir, "archive/index.html"),
+        distantSea: resolve(rootDir, "blog/distant-sea/index.html"),
         blueVeil: resolve(rootDir, "blog/blue-veil/index.html"),
         bodyMemory: resolve(rootDir, "blog/body-memory/index.html"),
         helloChris: resolve(rootDir, "blog/hello-chrislee/index.html")

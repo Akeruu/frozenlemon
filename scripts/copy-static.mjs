@@ -7,11 +7,6 @@ const distRoot = resolve(projectRoot, "dist");
 
 const staticDirectories = ["components", "data", "image", "scripts", "styles"];
 const staticFiles = ["robots.txt", "sitemap.xml"];
-const legacyArticleFiles = [
-  "blog/blue-veil.html",
-  "blog/body-memory.html",
-  "blog/Hello-ChrisLee.html"
-];
 
 await mkdir(distRoot, { recursive: true });
 
@@ -21,7 +16,7 @@ for (const directory of staticDirectories) {
   });
 }
 
-for (const file of [...staticFiles, ...legacyArticleFiles]) {
+for (const file of staticFiles) {
   const destination = resolve(distRoot, file);
   await mkdir(dirname(destination), { recursive: true });
   await copyFile(resolve(projectRoot, file), destination);

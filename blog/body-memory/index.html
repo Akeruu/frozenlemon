@@ -1,25 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>身体记忆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="关于身体意识、成长与青春期记忆的一段记录。" />
+    <title>身体记忆 | 速冻柠檬</title>
     <link rel="icon" href="../../image/镜子圆.webp" type="image/webp" />
+    <link rel="stylesheet" href="../../styles/components.css" />
+    <link rel="stylesheet" href="../../styles/article.css" />
   </head>
   <body>
-    <script>
-      (async function () {
-        const response = await fetch("../body-memory.html");
-        let html = await response.text();
-        html = html
-          .replaceAll("../styles/", "../../styles/")
-          .replaceAll("../image/", "../../image/")
-          .replaceAll("../scripts/", "../../scripts/")
-          .replaceAll("../components/", "../../components/");
-        document.open();
-        document.write(html);
-        document.close();
-      })();
-    </script>
+    <div data-include="../../components/subpage-header.html"></div>
+
+    <main class="article-page">
+      <header class="article-head">
+        <h1>身体记忆</h1>
+        <p class="date">
+          发布于 <time datetime="2022-09-20">2022-09-20</time>
+        </p>
+      </header>
+
+      <figure class="article-cover">
+        <img
+          src="../../image/blog/身体记忆.webp"
+          alt="身体记忆文章封面"
+          fetchpriority="high"
+        />
+      </figure>
+
+      <article class="article-body">
+        <p>意识到身体的时间节点，源自看到小学四年级高个女同学脖后的吊带。</p>
+        <p>
+          那位同学瘦瘦高高，偶尔指甲涂着低调但容易察觉的时尚浅粉色。灰头土脸的小学阶段，对于引领时尚潮流的女同学，其身上那显眼的白色吊带自然会生出一丝羡慕的情绪。“哇，那就是长大后要穿的吗？”“但是我没有欸，什么时候能长大呢？”
+        </p>
+        <p>……</p>
+        <p>
+          初到发育阶段的女生，即便穿着宽松校服，在跑步或者顺风的时候，衣物紧贴肌肤，身体轮廓难免突显。这时，校服下，会生长成尖锐的刺，狙向少女敏感的思绪。因而还没有穿贴身衣物的女同学，都会在站立时、跑步时不自觉地驼背。我们曾期待的青春成长，以一种讨厌的姿态悄然到来。
+        </p>
+        <p>
+          某次和奶奶外出散步，再次看到穿小背心的姐姐，她的背心不是挂脖的，而是绑着蝴蝶结的款式，好像在低调炫耀着青春期的勋章。我坐在空地前的几格楼梯上，舔了舔手中的冰淇淋，脱口而出：“奶奶，我也想穿那个。”
+        </p>
+        <p>
+          服装卖场在菜市场的二楼，很多师奶买了菜会到这里逛逛，新添件便宜衬衫。贴身衣物摆在小格间最靠近门口的地方，小背心、薄款、厚款……长的短的、红的蓝的……全都应有尽有。
+        </p>
+        <p>
+          奶奶把我带到小格间门口，面前便是服饰瀑布。“谁买呀？”老板娘尤其热情。奶奶指着我说“买给她。”“呀！长大了哇，是时候也要穿背心了，这里什么款式都有，喜欢红的橙的白的还是绿的？”老板娘说完，盯着我的眼神下移，开始打量我，琢磨着要给我多大的小背心。
+        </p>
+        <p>我忘了最后挑了哪种款式的小背心，但依旧清晰记得在房间第一次穿上时，端详、触碰新衣服的感觉。</p>
+        <p>我，也佩戴上青春期的勋章了。</p>
+      </article>
+    </main>
+
+    <div data-include="../../components/site-footer.html"></div>
+    <script type="module" src="../../scripts/includes.js"></script>
+    <script type="module" src="../../scripts/New Site.js"></script>
   </body>
 </html>

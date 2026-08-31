@@ -1,25 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>蓝色帷幔</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="第一次住院时，在蓝色帷幔下留下的一段情绪记录。" />
+    <title>蓝色帷幔 ・ 一次住院的情绪记录 | 速冻柠檬</title>
     <link rel="icon" href="../../image/镜子圆.webp" type="image/webp" />
+    <link rel="stylesheet" href="../../styles/components.css" />
+    <link rel="stylesheet" href="../../styles/article.css" />
   </head>
   <body>
-    <script>
-      (async function () {
-        const response = await fetch("../blue-veil.html");
-        let html = await response.text();
-        html = html
-          .replaceAll("../styles/", "../../styles/")
-          .replaceAll("../image/", "../../image/")
-          .replaceAll("../scripts/", "../../scripts/")
-          .replaceAll("../components/", "../../components/");
-        document.open();
-        document.write(html);
-        document.close();
-      })();
-    </script>
+    <div data-include="../../components/subpage-header.html"></div>
+
+    <main class="article-page">
+      <header class="article-head">
+        <h1>蓝色帷幔 ・ 一次住院的情绪记录</h1>
+        <p class="date">
+          发布于 <time datetime="2024-09-15">2024-09-15</time>
+        </p>
+      </header>
+
+      <figure class="article-cover">
+        <img
+          src="../../image/blog/蓝色帷幔tiny.webp"
+          alt="阳光透过医院的蓝色帷幔"
+          fetchpriority="high"
+        />
+      </figure>
+
+      <article class="article-body">
+        <p>
+          此刻我在医院，这是我第一回住院。在即将入住那刻，我看着不远处病房里一排排病床，偶尔走过穿着蓝白相间病号服的病人，我觉得有些紧张。朴素认知里，医院都是一个不好长住的地方。小时候，每当有感冒发烧小毛病，奶奶都会带我到知青药店，或者文仙坡的小诊所。医院对我来说很陌生，走过宝山脚的中医院，闻到里面飘出来的酒精味道，我都会快速走过。小学的校园传说，也传闻隔壁废弃的建筑也是一家医院。种种印象加持，我都蛮害怕去医院。
+        </p>
+        <p>
+          很多次体检，医生都会问有没有生过什么大病，有一回我答小时候被自行车轮子伤过缝了7针算不算。哈哈哈蛮可爱的。
+        </p>
+        <p>
+          这几天住院，我都没力气去写什么东西。一开始我还蛮开心拍病号服 ootd，但随着发烧越来越多，高烧消耗了我许多力气。
+        </p>
+        <p>
+          就在刚刚，同一病房的女生在外放打电话，劣质手机喇叭外放的声音频率高而难听。而隔壁的死小孩几乎一刻不停在大吵大闹，他的口头禅是“烦死了”，高度怀疑他就是看抖音上孙悟空那个表情包学来的。没救了他。
+        </p>
+        <p>
+          没力气做很多事情，我只好戴上耳机，听音乐转移自己注意力，疯狂暗示自己 ABC 模型 ABC 模型。于是就有落笔那瞬间抬头发现帘子是蓝色的。这本是睁眼就能看见的事情，可真正意识到还是刚刚那刻。我看到窗外阳光透过帘子，是淡淡的蓝色，像天空，也像海洋。
+        </p>
+        <p>我想起奈德。</p>
+        <blockquote>
+          <p>Tell me, what is it you plan to do with your one wild and precious life?</p>
+        </blockquote>
+        <p>在看电影时，我很有感触，将这段话写进了备忘录。毫无意外，此刻我流下了悔恨的泪水。</p>
+        <p>我做了一些尝试，弯弯绕绕走了好久。</p>
+        <p>我知道我想前往那座山峰，山顶不是天堂，不是乌托邦，可我依旧想去，我要去。</p>
+        <p>《俗女养成记》里说：</p>
+        <blockquote>
+          <p>
+            亲爱的陈嘉玲，你是从几时开始忘记了？忘记这辈子其实很长，长到你可以跌倒再站起来，做梦又醒过来；你又是从几时开始忘记了，这辈子其实没时间勉强自己，没时间再去讨厌你自己。
+          </p>
+        </blockquote>
+      </article>
+    </main>
+
+    <div data-include="../../components/site-footer.html"></div>
+    <script type="module" src="../../scripts/includes.js"></script>
+    <script type="module" src="../../scripts/New Site.js"></script>
   </body>
 </html>
