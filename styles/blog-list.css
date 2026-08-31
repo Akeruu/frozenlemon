@@ -16,7 +16,6 @@
   padding: 12px;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  border-left: 3px solid transparent;
   border-radius: var(--radius-medium);
   background: color-mix(in srgb, var(--brand-surface) 34%, var(--surface));
   box-shadow: 0 4px 16px rgba(20, 43, 104, 0.04);
@@ -48,7 +47,7 @@
 
 .blog-item:hover,
 .blog-item:focus-within {
-  border-left-color: var(--brand-primary);
+  border-color: var(--border-strong);
   background: color-mix(in srgb, var(--brand-surface) 58%, var(--surface));
   box-shadow: var(--shadow-hover);
   transform: translateY(-2px);
@@ -125,7 +124,6 @@
     display: block;
     height: auto;
     padding: 10px;
-    border-left-width: 1px;
   }
 
   .blog-cover-wrapper {

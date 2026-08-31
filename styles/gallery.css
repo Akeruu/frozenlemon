@@ -24,7 +24,7 @@
   min-width: 0;
   margin: 0;
   overflow: hidden;
-  border: 1px solid var(--brand-border);
+  border: 0;
   border-radius: var(--radius-medium);
   background: var(--surface-muted);
   box-shadow: 0 6px 18px rgba(20, 43, 104, 0.07);
@@ -49,19 +49,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 28px 10px 10px;
+  padding: 12px;
   color: #fff;
-  background: linear-gradient(transparent, rgba(8, 22, 82, 0.86));
+  background: transparent;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .photo-title,
 .meme-title {
-  margin-right: 5px;
+  margin-right: 0;
+  padding: 6px 11px;
   font-size: var(--font-size-sm);
+  font-weight: 500;
   line-height: 1.5;
+  color: #fff;
+  background: rgba(15, 18, 27, 0.48);
+  border-radius: 999px;
 }
 
 .photo-info .date,
@@ -108,8 +113,14 @@
     justify-content: flex-start;
     padding: 8px 2px 2px;
     color: var(--brand-primary);
-    background: transparent;
-    font-weight: 500;
     opacity: 1;
+  }
+
+  .photo-title,
+  .meme-title {
+    padding: 0;
+    color: var(--brand-primary);
+    background: transparent;
+    border-radius: 0;
   }
 }
